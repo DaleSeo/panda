@@ -55,7 +55,7 @@ Whether to run the codegen process
 
 The extension of the generated js files (default: 'mjs')
 
-Related: [`config.outExtension`](/docs/references/config#outExtension)
+Related: [`config.outExtension`](/docs/references/config#outextension)
 
 #### `--outdir <dir>`
 
@@ -67,7 +67,7 @@ Related: [`config.outdir`](/docs/references/config#outdir)
 
 The jsx framework to use
 
-Related: [`config.jsxFramework`](/docs/references/config#jsxFramework)
+Related: [`config.jsxFramework`](/docs/references/config#jsxframework)
 
 #### `--syntax <syntax>`
 
@@ -79,7 +79,7 @@ Related: [`config.syntax`](/docs/references/config#syntax)
 
 Set strictTokens to true
 
-Related: [`config.strictTokens`](/docs/references/config#strictTokens)
+Related: [`config.strictTokens`](/docs/references/config#stricttokens)
 
 #### `--logfile <file>`
 
@@ -187,7 +187,7 @@ Related: [`config.polyfill`](/docs/references/config#polyfill)
 
 Whether to only emit the `tokens` directory
 
-Related: [`config.emitTokensOnly`](/docs/references/config#emitTokensOnly)
+Related: [`config.emitTokensOnly`](/docs/references/config#emittokensonly)
 
 #### `--cpu-prof`
 
@@ -427,16 +427,18 @@ Base path of project
 
 ## `panda analyze`
 
-Analyze design token usage in glob.
+Analyze design token and recipe usage.
 
-By default it will analyze the entire project depending on your include and exclude options from your config file.
+By default, it will analyze your project based on the `include` and `exclude` config options.
 
 ```bash
 pnpm panda analyze
-# You can also analyze a specific file or folder
-# using the optional glob argument
+
+# analyze a specific file
 pnpm panda analyze src/components/Button.tsx
-pnpm panda analyze "./src/components/**"
+
+# analyze a specific glob
+pnpm panda analyze "src/components/**"
 ```
 
 ### Flags

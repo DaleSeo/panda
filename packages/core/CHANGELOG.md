@@ -1,5 +1,257 @@
 # @pandacss/core
 
+## 0.54.0
+
+### Patch Changes
+
+- Updated dependencies [efa060d]
+- Updated dependencies [d2aede5]
+- Updated dependencies [fdf5142]
+  - @pandacss/shared@0.54.0
+  - @pandacss/token-dictionary@0.54.0
+  - @pandacss/types@0.54.0
+  - @pandacss/is-valid-prop@0.54.0
+  - @pandacss/logger@0.54.0
+
+## 0.53.7
+
+### Patch Changes
+
+- 5e5af6b: Fix import detection in Windows
+- 9453c9b: Fix issue where `@breakpoint` from `hideBelow` or `hideFrom` might not be compiled to media query correctly
+  - @pandacss/is-valid-prop@0.53.7
+  - @pandacss/logger@0.53.7
+  - @pandacss/shared@0.53.7
+  - @pandacss/token-dictionary@0.53.7
+  - @pandacss/types@0.53.7
+
+## 0.53.6
+
+### Patch Changes
+
+- @pandacss/is-valid-prop@0.53.6
+- @pandacss/logger@0.53.6
+- @pandacss/shared@0.53.6
+- @pandacss/token-dictionary@0.53.6
+- @pandacss/types@0.53.6
+
+## 0.53.5
+
+### Patch Changes
+
+- @pandacss/is-valid-prop@0.53.5
+- @pandacss/logger@0.53.5
+- @pandacss/shared@0.53.5
+- @pandacss/token-dictionary@0.53.5
+- @pandacss/types@0.53.5
+
+## 0.53.4
+
+### Patch Changes
+
+- 57343c1: - Fix issue where conditions generated from `themes` lead to incorrect css when used directly in style
+  objects.
+  - Improve handling of mixed conditions defined in the config.
+  - @pandacss/is-valid-prop@0.53.4
+  - @pandacss/logger@0.53.4
+  - @pandacss/shared@0.53.4
+  - @pandacss/token-dictionary@0.53.4
+  - @pandacss/types@0.53.4
+
+## 0.53.3
+
+### Patch Changes
+
+- @pandacss/is-valid-prop@0.53.3
+- @pandacss/logger@0.53.3
+- @pandacss/shared@0.53.3
+- @pandacss/token-dictionary@0.53.3
+- @pandacss/types@0.53.3
+
+## 0.53.2
+
+### Patch Changes
+
+- @pandacss/is-valid-prop@0.53.2
+- @pandacss/logger@0.53.2
+- @pandacss/shared@0.53.2
+- @pandacss/token-dictionary@0.53.2
+- @pandacss/types@0.53.2
+
+## 0.53.1
+
+### Patch Changes
+
+- @pandacss/is-valid-prop@0.53.1
+- @pandacss/logger@0.53.1
+- @pandacss/shared@0.53.1
+- @pandacss/token-dictionary@0.53.1
+- @pandacss/types@0.53.1
+
+## 0.53.0
+
+### Patch Changes
+
+- Updated dependencies [5286731]
+  - @pandacss/is-valid-prop@0.53.0
+  - @pandacss/types@0.53.0
+  - @pandacss/logger@0.53.0
+  - @pandacss/token-dictionary@0.53.0
+  - @pandacss/shared@0.53.0
+
+## 0.52.0
+
+### Patch Changes
+
+- @pandacss/is-valid-prop@0.52.0
+- @pandacss/logger@0.52.0
+- @pandacss/shared@0.52.0
+- @pandacss/token-dictionary@0.52.0
+- @pandacss/types@0.52.0
+
+## 0.51.1
+
+### Patch Changes
+
+- @pandacss/is-valid-prop@0.51.1
+- @pandacss/logger@0.51.1
+- @pandacss/shared@0.51.1
+- @pandacss/token-dictionary@0.51.1
+- @pandacss/types@0.51.1
+
+## 0.51.0
+
+### Patch Changes
+
+- Updated dependencies [d68ad1f]
+  - @pandacss/types@0.51.0
+  - @pandacss/logger@0.51.0
+  - @pandacss/token-dictionary@0.51.0
+  - @pandacss/is-valid-prop@0.51.0
+  - @pandacss/shared@0.51.0
+
+## 0.50.0
+
+### Patch Changes
+
+- 7c85ac7: Improve inference of slots in slot recipes when spreading and concatenating slot names.
+
+  This handles the following case gracefully:
+
+  ```ts
+  const styles = sva({
+    className: 'foo',
+    slots: [...componentAnatomy.keys(), 'additional', 'slots', 'here'],
+  })
+  ```
+
+  Panda will now infer the slots from the anatomy and add them to the recipe.
+
+- Updated dependencies [fea78c7]
+- Updated dependencies [ad89b90]
+  - @pandacss/types@0.50.0
+  - @pandacss/token-dictionary@0.50.0
+  - @pandacss/logger@0.50.0
+  - @pandacss/is-valid-prop@0.50.0
+  - @pandacss/shared@0.50.0
+
+## 0.49.0
+
+### Minor Changes
+
+- 97a0e4d: Add support for animation styles. Animation styles focus solely on animations, allowing you to orchestrate
+  animation properties.
+
+  > Pairing animation styles with text styles and layer styles can make your styles a lot cleaner.
+
+  Here's an example of this:
+
+  ```jsx
+  import { defineAnimationStyles } from '@pandacss/dev'
+
+  export const animationStyles = defineAnimationStyles({
+    'slide-fade-in': {
+      value: {
+        transformOrigin: 'var(--transform-origin)',
+        animationDuration: 'fast',
+        '&[data-placement^=top]': {
+          animationName: 'slide-from-top, fade-in',
+        },
+        '&[data-placement^=bottom]': {
+          animationName: 'slide-from-bottom, fade-in',
+        },
+        '&[data-placement^=left]': {
+          animationName: 'slide-from-left, fade-in',
+        },
+        '&[data-placement^=right]': {
+          animationName: 'slide-from-right, fade-in',
+        },
+      },
+    },
+  })
+  ```
+
+  With that defined, I can use it in my recipe or css like so:
+
+  ```js
+  export const popoverSlotRecipe = defineSlotRecipe({
+    slots: anatomy.keys(),
+    base: {
+      content: {
+        _open: {
+          animationStyle: 'scale-fade-in',
+        },
+        _closed: {
+          animationStyle: 'scale-fade-out',
+        },
+      },
+    },
+  })
+  ```
+
+  This feature will drive consumers to lean in towards CSS for animations rather than JS. Composing animation names is a
+  powerful feature we should encourage consumers to use.
+
+### Patch Changes
+
+- Updated dependencies [97a0e4d]
+  - @pandacss/types@0.49.0
+  - @pandacss/logger@0.49.0
+  - @pandacss/token-dictionary@0.49.0
+  - @pandacss/is-valid-prop@0.49.0
+  - @pandacss/shared@0.49.0
+
+## 0.48.1
+
+### Patch Changes
+
+- @pandacss/is-valid-prop@0.48.1
+- @pandacss/logger@0.48.1
+- @pandacss/shared@0.48.1
+- @pandacss/token-dictionary@0.48.1
+- @pandacss/types@0.48.1
+
+## 0.48.0
+
+### Patch Changes
+
+- @pandacss/is-valid-prop@0.48.0
+- @pandacss/logger@0.48.0
+- @pandacss/shared@0.48.0
+- @pandacss/token-dictionary@0.48.0
+- @pandacss/types@0.48.0
+
+## 0.47.1
+
+### Patch Changes
+
+- Updated dependencies [144113f]
+  - @pandacss/token-dictionary@0.47.1
+  - @pandacss/is-valid-prop@0.47.1
+  - @pandacss/logger@0.47.1
+  - @pandacss/shared@0.47.1
+  - @pandacss/types@0.47.1
+
 ## 0.47.0
 
 ### Patch Changes

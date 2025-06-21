@@ -1,5 +1,167 @@
 # @pandacss/preset-panda
 
+## 0.54.0
+
+### Patch Changes
+
+- @pandacss/types@0.54.0
+
+## 0.53.7
+
+### Patch Changes
+
+- @pandacss/types@0.53.7
+
+## 0.53.6
+
+### Patch Changes
+
+- @pandacss/types@0.53.6
+
+## 0.53.5
+
+### Patch Changes
+
+- @pandacss/types@0.53.5
+
+## 0.53.4
+
+### Patch Changes
+
+- @pandacss/types@0.53.4
+
+## 0.53.3
+
+### Patch Changes
+
+- @pandacss/types@0.53.3
+
+## 0.53.2
+
+### Patch Changes
+
+- @pandacss/types@0.53.2
+
+## 0.53.1
+
+### Patch Changes
+
+- @pandacss/types@0.53.1
+
+## 0.53.0
+
+### Patch Changes
+
+- Updated dependencies [5286731]
+  - @pandacss/types@0.53.0
+
+## 0.52.0
+
+### Patch Changes
+
+- @pandacss/types@0.52.0
+
+## 0.51.1
+
+### Patch Changes
+
+- @pandacss/types@0.51.1
+
+## 0.51.0
+
+### Patch Changes
+
+- Updated dependencies [d68ad1f]
+  - @pandacss/types@0.51.0
+
+## 0.50.0
+
+### Patch Changes
+
+- Updated dependencies [fea78c7]
+- Updated dependencies [ad89b90]
+  - @pandacss/types@0.50.0
+
+## 0.49.0
+
+### Minor Changes
+
+- 97a0e4d: Add support for animation styles. Animation styles focus solely on animations, allowing you to orchestrate
+  animation properties.
+
+  > Pairing animation styles with text styles and layer styles can make your styles a lot cleaner.
+
+  Here's an example of this:
+
+  ```jsx
+  import { defineAnimationStyles } from '@pandacss/dev'
+
+  export const animationStyles = defineAnimationStyles({
+    'slide-fade-in': {
+      value: {
+        transformOrigin: 'var(--transform-origin)',
+        animationDuration: 'fast',
+        '&[data-placement^=top]': {
+          animationName: 'slide-from-top, fade-in',
+        },
+        '&[data-placement^=bottom]': {
+          animationName: 'slide-from-bottom, fade-in',
+        },
+        '&[data-placement^=left]': {
+          animationName: 'slide-from-left, fade-in',
+        },
+        '&[data-placement^=right]': {
+          animationName: 'slide-from-right, fade-in',
+        },
+      },
+    },
+  })
+  ```
+
+  With that defined, I can use it in my recipe or css like so:
+
+  ```js
+  export const popoverSlotRecipe = defineSlotRecipe({
+    slots: anatomy.keys(),
+    base: {
+      content: {
+        _open: {
+          animationStyle: 'scale-fade-in',
+        },
+        _closed: {
+          animationStyle: 'scale-fade-out',
+        },
+      },
+    },
+  })
+  ```
+
+  This feature will drive consumers to lean in towards CSS for animations rather than JS. Composing animation names is a
+  powerful feature we should encourage consumers to use.
+
+### Patch Changes
+
+- Updated dependencies [97a0e4d]
+  - @pandacss/types@0.49.0
+
+## 0.48.1
+
+### Patch Changes
+
+- @pandacss/types@0.48.1
+
+## 0.48.0
+
+### Patch Changes
+
+- @pandacss/types@0.48.0
+
+## 0.47.1
+
+### Patch Changes
+
+- @pandacss/types@0.47.1
+
 ## 0.47.0
 
 ### Patch Changes

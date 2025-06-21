@@ -1,5 +1,179 @@
 # @pandacss/token-dictionary
 
+## 0.54.0
+
+### Patch Changes
+
+- fdf5142: Fix issue where `borderWidth` token reference adds an extra `px` to the generated css value
+- Updated dependencies [efa060d]
+- Updated dependencies [d2aede5]
+  - @pandacss/shared@0.54.0
+  - @pandacss/types@0.54.0
+  - @pandacss/logger@0.54.0
+
+## 0.53.7
+
+### Patch Changes
+
+- @pandacss/logger@0.53.7
+- @pandacss/shared@0.53.7
+- @pandacss/types@0.53.7
+
+## 0.53.6
+
+### Patch Changes
+
+- @pandacss/logger@0.53.6
+- @pandacss/shared@0.53.6
+- @pandacss/types@0.53.6
+
+## 0.53.5
+
+### Patch Changes
+
+- @pandacss/logger@0.53.5
+- @pandacss/shared@0.53.5
+- @pandacss/types@0.53.5
+
+## 0.53.4
+
+### Patch Changes
+
+- @pandacss/logger@0.53.4
+- @pandacss/shared@0.53.4
+- @pandacss/types@0.53.4
+
+## 0.53.3
+
+### Patch Changes
+
+- @pandacss/logger@0.53.3
+- @pandacss/shared@0.53.3
+- @pandacss/types@0.53.3
+
+## 0.53.2
+
+### Patch Changes
+
+- @pandacss/logger@0.53.2
+- @pandacss/shared@0.53.2
+- @pandacss/types@0.53.2
+
+## 0.53.1
+
+### Patch Changes
+
+- @pandacss/logger@0.53.1
+- @pandacss/shared@0.53.1
+- @pandacss/types@0.53.1
+
+## 0.53.0
+
+### Patch Changes
+
+- Updated dependencies [5286731]
+  - @pandacss/types@0.53.0
+  - @pandacss/logger@0.53.0
+  - @pandacss/shared@0.53.0
+
+## 0.52.0
+
+### Patch Changes
+
+- @pandacss/logger@0.52.0
+- @pandacss/shared@0.52.0
+- @pandacss/types@0.52.0
+
+## 0.51.1
+
+### Patch Changes
+
+- @pandacss/logger@0.51.1
+- @pandacss/shared@0.51.1
+- @pandacss/types@0.51.1
+
+## 0.51.0
+
+### Patch Changes
+
+- Updated dependencies [d68ad1f]
+  - @pandacss/types@0.51.0
+  - @pandacss/logger@0.51.0
+  - @pandacss/shared@0.51.0
+
+## 0.50.0
+
+### Minor Changes
+
+- ad89b90: Add support for semantic tokens in composite shadow `blur`, `offsetX`, `offsetY` and `spread` properties.
+
+  This enables the use of semantic tokens in composite shadow properties.
+
+  ```ts
+  // panda.config.ts
+
+  export default defineConfig({
+    theme: {
+      tokens: {
+        // ...
+        shadows: {
+          sm: {
+            value: {
+              offsetX: '{spacing.3}',
+              offsetY: '{spacing.3}',
+              blur: '1rem',
+              spread: '{spacing.3}',
+              color: '{colors.red}',
+            },
+          },
+        },
+      },
+    },
+  })
+  ```
+
+### Patch Changes
+
+- Updated dependencies [fea78c7]
+- Updated dependencies [ad89b90]
+  - @pandacss/types@0.50.0
+  - @pandacss/logger@0.50.0
+  - @pandacss/shared@0.50.0
+
+## 0.49.0
+
+### Patch Changes
+
+- Updated dependencies [97a0e4d]
+  - @pandacss/types@0.49.0
+  - @pandacss/logger@0.49.0
+  - @pandacss/shared@0.49.0
+
+## 0.48.1
+
+### Patch Changes
+
+- @pandacss/logger@0.48.1
+- @pandacss/shared@0.48.1
+- @pandacss/types@0.48.1
+
+## 0.48.0
+
+### Patch Changes
+
+- @pandacss/logger@0.48.0
+- @pandacss/shared@0.48.0
+- @pandacss/types@0.48.0
+
+## 0.47.1
+
+### Patch Changes
+
+- 144113f: Fix issue where token reference in composite border token generates incorrect css.
+  - @pandacss/logger@0.47.1
+  - @pandacss/shared@0.47.1
+  - @pandacss/types@0.47.1
+
 ## 0.47.0
 
 ### Minor Changes

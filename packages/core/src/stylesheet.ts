@@ -62,6 +62,7 @@ export class Stylesheet {
     let css = stringify(result)
     css += this.context.globalVars.toString()
     css += this.context.globalFontface.toString()
+    css += this.context.globalPositionTry.toString()
 
     if (this.context.hooks['cssgen:done']) {
       css = this.context.hooks['cssgen:done']({ artifact: 'global', content: css }) ?? css
@@ -94,10 +95,13 @@ export class Stylesheet {
   }
 
   getLayerCss = (...layers: CascadeLayer[]) => {
+    const breakpoints = this.context.conditions.breakpoints
     return optimizeCss(
       layers
         .map((layer: CascadeLayer) => {
-          return this.context.layers.getLayerRoot(layer).toString()
+          const root = this.context.layers.getLayerRoot(layer)
+          breakpoints.expandScreenAtRule(root as postcss.Root)
+          return root.toString()
         })
         .join('\n'),
       {

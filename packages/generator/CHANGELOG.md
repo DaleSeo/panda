@@ -1,5 +1,338 @@
 # @pandacss/generator
 
+## 0.54.0
+
+### Patch Changes
+
+- 941a208: Fix TS generated pattern dts code when `strict: true` is set.
+- d2aede5: Reduce the size of the generated `Token` type by referencing category tokens.
+
+  **Before:**
+
+  ```ts
+  export type Token = 'colors.green.400' | 'colors.red.400'
+
+  export type ColorToken = 'green.400' | 'red.400'
+  ```
+
+  **After:**
+
+  ```ts
+  export type Token = `colors.${ColorToken}`
+
+  export type ColorToken = 'green.400' | 'red.400'
+  ```
+
+- fdf5142: Fix issue where `borderWidth` token reference adds an extra `px` to the generated css value
+- Updated dependencies [efa060d]
+- Updated dependencies [d2aede5]
+- Updated dependencies [fdf5142]
+  - @pandacss/shared@0.54.0
+  - @pandacss/token-dictionary@0.54.0
+  - @pandacss/core@0.54.0
+  - @pandacss/types@0.54.0
+  - @pandacss/is-valid-prop@0.54.0
+  - @pandacss/logger@0.54.0
+
+## 0.53.7
+
+### Patch Changes
+
+- a67f920: This change fixes a issue where if two themes had shared a similar start name, both would be outputted in the
+  token generation process
+- Updated dependencies [5e5af6b]
+- Updated dependencies [9453c9b]
+  - @pandacss/core@0.53.7
+  - @pandacss/is-valid-prop@0.53.7
+  - @pandacss/logger@0.53.7
+  - @pandacss/shared@0.53.7
+  - @pandacss/token-dictionary@0.53.7
+  - @pandacss/types@0.53.7
+
+## 0.53.6
+
+### Patch Changes
+
+- a292e9a: Fix issue where generated type for `CssVarKeys` was incorrect resulting in partial autocompletion
+  - @pandacss/core@0.53.6
+  - @pandacss/is-valid-prop@0.53.6
+  - @pandacss/logger@0.53.6
+  - @pandacss/shared@0.53.6
+  - @pandacss/token-dictionary@0.53.6
+  - @pandacss/types@0.53.6
+
+## 0.53.5
+
+### Patch Changes
+
+- fe3e943: - **React, Preact, Qwik, Solid**: Improve style composition when creating multiple `styled` instances
+  - **Vue**: Fix issue where template literal syntax doesn't work
+  - @pandacss/core@0.53.5
+  - @pandacss/is-valid-prop@0.53.5
+  - @pandacss/logger@0.53.5
+  - @pandacss/shared@0.53.5
+  - @pandacss/token-dictionary@0.53.5
+  - @pandacss/types@0.53.5
+
+## 0.53.4
+
+### Patch Changes
+
+- a2bc49d: - Fix issue where input placeholder styles cause crash in Safari `16.5`
+  - Fix issue where `mergeProps` can cause DoS due to prototype pollution
+- Updated dependencies [57343c1]
+  - @pandacss/core@0.53.4
+  - @pandacss/is-valid-prop@0.53.4
+  - @pandacss/logger@0.53.4
+  - @pandacss/shared@0.53.4
+  - @pandacss/token-dictionary@0.53.4
+  - @pandacss/types@0.53.4
+
+## 0.53.3
+
+### Patch Changes
+
+- 00aa868: Add cursor utility config
+  - @pandacss/core@0.53.3
+  - @pandacss/is-valid-prop@0.53.3
+  - @pandacss/logger@0.53.3
+  - @pandacss/shared@0.53.3
+  - @pandacss/token-dictionary@0.53.3
+  - @pandacss/types@0.53.3
+
+## 0.53.2
+
+### Patch Changes
+
+- @pandacss/core@0.53.2
+- @pandacss/is-valid-prop@0.53.2
+- @pandacss/logger@0.53.2
+- @pandacss/shared@0.53.2
+- @pandacss/token-dictionary@0.53.2
+- @pandacss/types@0.53.2
+
+## 0.53.1
+
+### Patch Changes
+
+- @pandacss/core@0.53.1
+- @pandacss/is-valid-prop@0.53.1
+- @pandacss/logger@0.53.1
+- @pandacss/shared@0.53.1
+- @pandacss/token-dictionary@0.53.1
+- @pandacss/types@0.53.1
+
+## 0.53.0
+
+### Minor Changes
+
+- 5286731: Add support for recent baseline and experimental css properties:
+
+  - **Size interpolation:** fieldSizing, interpolateSize
+  - **Text rendering:** textWrapMode, textWrapStyle and textSpacingTrim
+  - **[Experimental] Anchor positioning:** anchorName, anchorScope, positionAnchor, positionArea, positionTry,
+    positionTryFallback, positionTryOrder, positionVisibility
+
+### Patch Changes
+
+- Updated dependencies [5286731]
+  - @pandacss/is-valid-prop@0.53.0
+  - @pandacss/types@0.53.0
+  - @pandacss/core@0.53.0
+  - @pandacss/logger@0.53.0
+  - @pandacss/token-dictionary@0.53.0
+  - @pandacss/shared@0.53.0
+
+## 0.52.0
+
+### Patch Changes
+
+- @pandacss/core@0.52.0
+- @pandacss/is-valid-prop@0.52.0
+- @pandacss/logger@0.52.0
+- @pandacss/shared@0.52.0
+- @pandacss/token-dictionary@0.52.0
+- @pandacss/types@0.52.0
+
+## 0.51.1
+
+### Patch Changes
+
+- @pandacss/core@0.51.1
+- @pandacss/is-valid-prop@0.51.1
+- @pandacss/logger@0.51.1
+- @pandacss/shared@0.51.1
+- @pandacss/token-dictionary@0.51.1
+- @pandacss/types@0.51.1
+
+## 0.51.0
+
+### Patch Changes
+
+- Updated dependencies [d68ad1f]
+  - @pandacss/types@0.51.0
+  - @pandacss/core@0.51.0
+  - @pandacss/logger@0.51.0
+  - @pandacss/token-dictionary@0.51.0
+  - @pandacss/is-valid-prop@0.51.0
+  - @pandacss/shared@0.51.0
+
+## 0.50.0
+
+### Minor Changes
+
+- ad89b90: Add support for semantic tokens in composite shadow `blur`, `offsetX`, `offsetY` and `spread` properties.
+
+  This enables the use of semantic tokens in composite shadow properties.
+
+  ```ts
+  // panda.config.ts
+
+  export default defineConfig({
+    theme: {
+      tokens: {
+        // ...
+        shadows: {
+          sm: {
+            value: {
+              offsetX: '{spacing.3}',
+              offsetY: '{spacing.3}',
+              blur: '1rem',
+              spread: '{spacing.3}',
+              color: '{colors.red}',
+            },
+          },
+        },
+      },
+    },
+  })
+  ```
+
+### Patch Changes
+
+- Updated dependencies [fea78c7]
+- Updated dependencies [ad89b90]
+- Updated dependencies [7c85ac7]
+  - @pandacss/types@0.50.0
+  - @pandacss/token-dictionary@0.50.0
+  - @pandacss/core@0.50.0
+  - @pandacss/logger@0.50.0
+  - @pandacss/is-valid-prop@0.50.0
+  - @pandacss/shared@0.50.0
+
+## 0.49.0
+
+### Minor Changes
+
+- 97a0e4d: Add support for animation styles. Animation styles focus solely on animations, allowing you to orchestrate
+  animation properties.
+
+  > Pairing animation styles with text styles and layer styles can make your styles a lot cleaner.
+
+  Here's an example of this:
+
+  ```jsx
+  import { defineAnimationStyles } from '@pandacss/dev'
+
+  export const animationStyles = defineAnimationStyles({
+    'slide-fade-in': {
+      value: {
+        transformOrigin: 'var(--transform-origin)',
+        animationDuration: 'fast',
+        '&[data-placement^=top]': {
+          animationName: 'slide-from-top, fade-in',
+        },
+        '&[data-placement^=bottom]': {
+          animationName: 'slide-from-bottom, fade-in',
+        },
+        '&[data-placement^=left]': {
+          animationName: 'slide-from-left, fade-in',
+        },
+        '&[data-placement^=right]': {
+          animationName: 'slide-from-right, fade-in',
+        },
+      },
+    },
+  })
+  ```
+
+  With that defined, I can use it in my recipe or css like so:
+
+  ```js
+  export const popoverSlotRecipe = defineSlotRecipe({
+    slots: anatomy.keys(),
+    base: {
+      content: {
+        _open: {
+          animationStyle: 'scale-fade-in',
+        },
+        _closed: {
+          animationStyle: 'scale-fade-out',
+        },
+      },
+    },
+  })
+  ```
+
+  This feature will drive consumers to lean in towards CSS for animations rather than JS. Composing animation names is a
+  powerful feature we should encourage consumers to use.
+
+### Patch Changes
+
+- Updated dependencies [97a0e4d]
+  - @pandacss/types@0.49.0
+  - @pandacss/core@0.49.0
+  - @pandacss/logger@0.49.0
+  - @pandacss/token-dictionary@0.49.0
+  - @pandacss/is-valid-prop@0.49.0
+  - @pandacss/shared@0.49.0
+
+## 0.48.1
+
+### Patch Changes
+
+- af9715a: Fix issue where `scrollbarGutter` property incorrectly referenced spacing tokens. The only valid values are
+  `auto`, `stable`, and `both-edges`.
+  - @pandacss/core@0.48.1
+  - @pandacss/is-valid-prop@0.48.1
+  - @pandacss/logger@0.48.1
+  - @pandacss/shared@0.48.1
+  - @pandacss/token-dictionary@0.48.1
+  - @pandacss/types@0.48.1
+
+## 0.48.0
+
+### Patch Changes
+
+- 2bc12d2: Fix multi-theme issue where calling the `getTheme` function throws a Vite error due to invalid dynamic import
+  format.
+
+  ```js
+  import { getTheme } from 'styled-system/themes'
+
+  getTheme('default')
+  // -> The above dynamic import cannot be analyzed by Vite.
+  ```
+
+  - @pandacss/core@0.48.0
+  - @pandacss/is-valid-prop@0.48.0
+  - @pandacss/logger@0.48.0
+  - @pandacss/shared@0.48.0
+  - @pandacss/token-dictionary@0.48.0
+  - @pandacss/types@0.48.0
+
+## 0.47.1
+
+### Patch Changes
+
+- Updated dependencies [144113f]
+  - @pandacss/token-dictionary@0.47.1
+  - @pandacss/core@0.47.1
+  - @pandacss/is-valid-prop@0.47.1
+  - @pandacss/logger@0.47.1
+  - @pandacss/shared@0.47.1
+  - @pandacss/types@0.47.1
+
 ## 0.47.0
 
 ### Minor Changes

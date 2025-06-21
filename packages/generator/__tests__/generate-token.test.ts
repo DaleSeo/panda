@@ -45,6 +45,43 @@ describe('generator', () => {
     `)
   })
 
+  test('shadow tokens - composite', () => {
+    const css = tokenCss({
+      eject: true,
+      theme: {
+        tokens: {
+          spacing: {
+            '3': { value: '1rem' },
+          },
+          colors: {
+            red: { value: '#ff0000' },
+          },
+          shadows: {
+            sm: {
+              value: {
+                offsetX: '{spacing.3}',
+                offsetY: '{spacing.3}',
+                blur: '1rem',
+                spread: '{spacing.3}',
+                color: '{colors.red}',
+              },
+            },
+          },
+        },
+      },
+    })
+
+    expect(css).toMatchInlineSnapshot(`
+      "@layer tokens {
+        :where(html) {
+          --spacing-3: 1rem;
+          --colors-red: #ff0000;
+          --shadows-sm: var(--spacing-3) var(--spacing-3) 1rem var(--spacing-3) var(--colors-red);
+      }
+      }"
+    `)
+  })
+
   test('[css] should generate css', () => {
     expect(tokenCss()).toMatchInlineSnapshot(`
       "@layer tokens {
@@ -1016,6 +1053,104 @@ describe('generator', () => {
     `)
   })
 
+  test('themes - staticCss with multiple themes ', () => {
+    const css = tokenCss({
+      eject: true,
+      conditions: {
+        osDark: '@media (prefers-color-scheme: dark)',
+      },
+      theme: {
+        tokens: {
+          colors: {
+            text: { value: 'blue' },
+          },
+        },
+        semanticTokens: {
+          colors: {
+            body: {
+              value: {
+                base: '{colors.blue.600}',
+                _osDark: '{colors.blue.400}',
+              },
+            },
+          },
+        },
+      },
+      // alternative theme variants
+      themes: {
+        primary: {
+          tokens: {
+            colors: {
+              text: { value: 'red' },
+            },
+          },
+          semanticTokens: {
+            colors: {
+              muted: { value: '{colors.red.200}' },
+              body: {
+                value: {
+                  base: '{colors.red.600}',
+                  _osDark: '{colors.red.400}',
+                },
+              },
+            },
+          },
+        },
+        'primary-legacy': {
+          tokens: {
+            colors: {
+              text: { value: 'blue' },
+            },
+          },
+          semanticTokens: {
+            colors: {
+              muted: { value: '{colors.blue.200}' },
+              body: {
+                value: {
+                  base: '{colors.blue.600}',
+                  _osDark: '{colors.blue.400}',
+                },
+              },
+            },
+          },
+        },
+      },
+      staticCss: {
+        // only generate the red in addition to the main one
+        themes: ['primary'],
+        // use  ['*'] to generate all themes
+      },
+      outdir: '',
+    })
+
+    expect(css).toMatchInlineSnapshot(`
+      "@layer tokens {
+        :where(html) {
+          --colors-text: blue;
+          --colors-body: var(--colors-blue-600);
+      }
+
+        [data-panda-theme=primary] {
+          --colors-text: red;
+          --colors-muted: var(--colors-red-200);
+          --colors-body: var(--colors-red-600)
+      }
+
+        @media (prefers-color-scheme: dark) {
+          :where(html) {
+            --colors-body: var(--colors-blue-400)
+              }
+          }
+
+        @media (prefers-color-scheme: dark) {
+          [data-panda-theme=primary] {
+            --colors-body: var(--colors-red-400)
+                  }
+              }
+      }"
+    `)
+  })
+
   test('themes - staticCss with *', () => {
     const css = tokenCss({
       eject: true,
@@ -1092,6 +1227,39 @@ describe('generator', () => {
             --colors-body: var(--colors-red-400)
                   }
               }
+      }"
+    `)
+  })
+
+  test('border widths', () => {
+    const css = tokenCss({
+      eject: true,
+      theme: {
+        tokens: {
+          borderWidths: {
+            sm: { value: '1px' },
+            md: { value: '2px' },
+          },
+          borders: {
+            netural: {
+              value: { width: '{borderWidths.sm}', color: 'blue', style: 'solid' },
+            },
+            success: {
+              value: { width: '{borderWidths.md}', color: 'green', style: 'solid' },
+            },
+          },
+        },
+      },
+    })
+
+    expect(css).toMatchInlineSnapshot(`
+      "@layer tokens {
+        :where(html) {
+          --border-widths-sm: 1px;
+          --border-widths-md: 2px;
+          --borders-netural: var(--border-widths-sm) solid blue;
+          --borders-success: var(--border-widths-md) solid green;
+      }
       }"
     `)
   })

@@ -6,6 +6,446 @@ See the [Changesets](./.changeset) for the latest changes.
 
 ## [Unreleased]
 
+## [0.54.0] - 2025-06-12
+
+### Fixed
+
+- Fix issue where `borderWidth` token reference adds an extra `px` to the generated css value
+- Fix TS generated pattern dts code when `strict: true` is set
+- Fix issue where text (or layer) styles that use conditions don't render correctly
+- Revert `tinyglobally` to `fast-glob` change to fix issues with glob matching
+
+### Added
+
+- Add more `aria` attributes to conditions for better accessibility and styling hooks:
+  - `[aria-disabled=true]` was added to `disabled`, `peerDisabled`, and `groupDisabled` conditions
+  - `[aria-readonly=true]` was added to the `readOnly` condition
+  - `[aria-invalid=true]` was added to `invalid` and `groupInvalid` conditions
+
+### Changed
+
+- Improve algorithm for deterministic property order:
+
+  - Longhand (`padding`, `margin`, `inset`)
+  - Shorthand of longhands (`padding-inline`, `margin-inline`)
+  - Shorthand of shorthands (`padding-inline-start`, `margin-inline-start`)
+
+  ```tsx
+  css({
+    p: '4',
+    pr: '2',
+    px: '10',
+  })
+  ```
+
+  Will result in the following css regardless of the order of the properties:
+
+  ```css
+  .p-4 {
+    padding: 4px;
+  }
+
+  .px-10 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .pr-2 {
+    padding-right: 2px;
+  }
+  ```
+
+- Reduce the size of the generated `Token` type by referencing category tokens
+
+  **Before:**
+
+  ```ts
+  export type Token = 'colors.green.400' | 'colors.red.400'
+
+  export type ColorToken = 'green.400' | 'red.400'
+  ```
+
+  **After:**
+
+  ```ts
+  export type Token = `colors.${ColorToken}`
+
+  export type ColorToken = 'green.400' | 'red.400'
+  ```
+
+## [0.53.7] - 2025-05-24
+
+### Fixed
+
+- Fix import detection in Windows
+- Fix issue where `@breakpoint` from `hideBelow` or `hideFrom` might not be compiled to media query correctly
+- Fix issue where if two themes had shared a similar start name, both would be outputted in the token generation process
+
+## [0.53.6] - 2025-04-27
+
+Fix issue where generated type for `CssVarKeys` was incorrect resulting in partial autocompletion
+
+## [0.53.5] - 2025-04-26
+
+### Fixed
+
+- fix(studio): can't render semantic color token without base definition
+- **React, Preact, Qwik, Solid**: Improve style composition when creating multiple `styled` instances
+- **Vue**: Fix issue where template literal syntax doesn't work
+
+### Added
+
+- Add tokens for logical border widths
+
+## [0.53.4] - 2025-04-15
+
+### Fixed
+
+- Fix issue where conditions generated from `themes` lead to incorrect css when used directly in style objects.
+- Improve handling of mixed conditions defined in the config.
+- Fix issue where input placeholder styles cause crash in Safari `16.5`
+- Fix issue where `mergeProps` can cause DoS due to prototype pollution
+
+## [0.53.3] - 2025-03-24
+
+### Added
+
+- Add cursor utility config.
+
+## [0.53.2] - 2025-03-18
+
+### Fixed
+
+- Fix security issue due to stale version of `esbuild` used in `bundle-n-require`
+
+### Changed
+
+- Update `groupInvalid` condition according to other group selector implementations
+
+## [0.53.1] - 2025-03-04
+
+### Fixed
+
+Fix issue where file watching doesn't work due the recent security upgrade of the `chokidar` package.
+
+## [0.53.0] - 2025-02-10
+
+### Added
+
+Add support for recent baseline and experimental css properties:
+
+- **Size interpolation:** fieldSizing, interpolateSize
+- **Text rendering:** textWrapMode, textWrapStyle and textSpacingTrim
+- **[Experimental] Anchor positioning:** anchorName, anchorScope, positionAnchor, positionArea, positionTry,
+  positionTryFallback, positionTryOrder, positionVisibility
+
+## [0.52.0] - 2025-01-02
+
+### Added
+
+Add support for new conditions:
+
+- `current` -> `&:is([aria-current=true], [data-current])`
+- `today` -> `&[data-today]`
+- `unavailable` -> `&[data-unavailable]`
+- `rangeStart` -> `&[data-range-start]`
+- `rangeEnd` -> `&[data-range-end]`
+- `now` -> `&[data-now]`
+- `topmost` -> `&[data-topmost]`
+- `icon` -> `& :where(svg)`
+- `complete` -> `&[data-complete]`
+- `incomplete` -> `&[data-incomplete]`
+- `dragging` -> `&[data-dragging]`
+- `grabbed` -> `&[data-grabbed]`
+- `underValue` -> `&[data-state=under-value]`
+- `overValue` -> `&[data-state=over-value]`
+- `atValue` -> `&[data-state=at-value]`
+- `hidden` -> `&:is([hidden], [data-hidden])`
+
+### Fixed
+
+Security: Update chokidar to remove vulnerability
+
+## [0.51.1] - 2025-01-01
+
+### Fixed
+
+Redesigned the recipe report to be more readable and easier to understand. We simplified the `JSX` and `Function`
+columns to be more concise.
+
+**BEFORE**
+
+```sh
+╔════════════════════════╤══════════════════════╤═════════╤═══════╤════════════╤═══════════════════╤══════════╗
+║ Recipe                 │ Variant Combinations │ Usage % │ JSX % │ Function % │ Most Used         │ Found in ║
+╟────────────────────────┼──────────────────────┼─────────┼───────┼────────────┼───────────────────┼──────────╢
+║ someRecipe (1 variant) │ 1 / 1                │ 100%    │ 100%  │ 0%         │ size.small        │ 1 file   ║
+╟────────────────────────┼──────────────────────┼─────────┼───────┼────────────┼───────────────────┼──────────╢
+║ button (4 variants)    │ 7 / 9                │ 77.78%  │ 63%   │ 38%        │ size.md, size.sm, │ 2 files  ║
+║                        │                      │         │       │            │ state.focused,    │          ║
+║                        │                      │         │       │            │ variant.danger,   │          ║
+║                        │                      │         │       │            │ variant.primary   │          ║
+╚════════════════════════╧══════════════════════╧═════════╧═══════╧════════════╧═══════════════════╧══════════╝
+```
+
+**AFTER**
+
+```sh
+╔════════════════════════╤════════════════╤═══════════════════╤═══════════════════╤══════════╤═══════════╗
+║ Recipe                 │ Variant values │ Usage %           │ Most used         │ Found in │ Used as   ║
+╟────────────────────────┼────────────────┼───────────────────┼───────────────────┼──────────┼───────────╢
+║ someRecipe (1 variant) │ 1 value        │ 100% (1 value)    │ size.small        │ 1 file   │ jsx: 100% ║
+║                        │                │                   │                   │          │ fn: 0%    ║
+╟────────────────────────┼────────────────┼───────────────────┼───────────────────┼──────────┼───────────╢
+║ button (4 variants)    │ 9 values       │ 77.78% (7 values) │ size.md, size.sm, │ 2 files  │ jsx: 63%  ║
+║                        │                │                   │ state.focused,    │          │ fn: 38%   ║
+║                        │                │                   │ variant.danger,   │          │           ║
+║                        │                │                   │ variant.primary   │          │           ║
+╚════════════════════════╧════════════════╧═══════════════════╧═══════════════════╧══════════╧═══════════╝
+```
+
+### Added
+
+- Add support for `panda analyze --output <file>.json` to output the analysis results to a file.
+
+## [0.51.0] - 2024-12-31
+
+**[BREAKING]**: Fix issue where Next.js build might fail intermittently due to version mismatch between internal
+`ts-morph` and userland `typescript`.
+
+## [0.50.0] - 2024-12-27
+
+### Added
+
+- Add support for semantic tokens in composite shadow `blur`, `offsetX`, `offsetY` and `spread` properties.
+
+This enables the use of semantic tokens in composite shadow properties.
+
+```ts
+// panda.config.ts
+
+export default defineConfig({
+  theme: {
+    tokens: {
+      // ...
+      shadows: {
+        sm: {
+          value: {
+            offsetX: '{spacing.3}',
+            offsetY: '{spacing.3}',
+            blur: '1rem',
+            spread: '{spacing.3}',
+            color: '{colors.red}',
+          },
+        },
+      },
+    },
+  },
+})
+```
+
+- Adds support for static analysis of used tokens and recipe variants. It helps to get a birds-eye view of how your
+  design system is used and answers the following questions:
+
+- What tokens are most used?
+- What recipe variants are most used?
+- How many hardcoded values vs tokens do we have?
+
+```sh
+panda analyze --scope=<token|recipe>
+```
+
+> Still work in progress but we're excited to get your feedback!
+
+### Changed
+
+Improve inference of slots in slot recipes when spreading and concatenating slot names.
+
+This handles the following case gracefully:
+
+```ts
+const styles = sva({
+  className: 'foo',
+  slots: [...componentAnatomy.keys(), 'additional', 'slots', 'here'],
+})
+```
+
+Panda will now infer the slots from the anatomy and add them to the recipe.
+
+## [0.49.0] - 2024-12-08
+
+Add support for animation styles. Animation styles focus solely on animations, allowing you to orchestrate animation
+properties.
+
+> Pairing animation styles with text styles and layer styles can make your styles a lot cleaner.
+
+Here's an example of this:
+
+```jsx
+import { defineAnimationStyles } from '@pandacss/dev'
+
+export const animationStyles = defineAnimationStyles({
+  'slide-fade-in': {
+    value: {
+      transformOrigin: 'var(--transform-origin)',
+      animationDuration: 'fast',
+      '&[data-placement^=top]': {
+        animationName: 'slide-from-top, fade-in',
+      },
+      '&[data-placement^=bottom]': {
+        animationName: 'slide-from-bottom, fade-in',
+      },
+      '&[data-placement^=left]': {
+        animationName: 'slide-from-left, fade-in',
+      },
+      '&[data-placement^=right]': {
+        animationName: 'slide-from-right, fade-in',
+      },
+    },
+  },
+})
+```
+
+With that defined, I can use it in my recipe or css like so:
+
+```js
+export const popoverSlotRecipe = defineSlotRecipe({
+  slots: anatomy.keys(),
+  base: {
+    content: {
+      _open: {
+        animationStyle: 'scale-fade-in',
+      },
+      _closed: {
+        animationStyle: 'scale-fade-out',
+      },
+    },
+  },
+})
+```
+
+This feature will drive consumers to lean in towards CSS for animations rather than JS. Composing animation names is a
+powerful feature we should encourage consumers to use.
+
+### Added
+
+## [0.48.1] - 2024-12-07
+
+### Fixed
+
+- Fix issue where `staticCss` artifacts were not included in the build info json.
+- Fix issue where `scrollbarGutter` property incorrectly referenced spacing tokens. The only valid values are `auto`,
+  `stable`, and `both-edges`.
+
+## [0.48.0] - 2024-11-13
+
+### Fixed
+
+Fix multi-theme issue where calling the `getTheme` function throws a Vite error due to invalid dynamic import format.
+
+```js
+import { getTheme } from 'styled-system/themes'
+
+getTheme('default')
+// -> The above dynamic import cannot be analyzed by Vite.
+```
+
+### Changed
+
+[Breaking] Remove default utility values for `gridTemplateColumns`, `gridTemplateRows`, `gridColumn` and `gridRow` to
+prevent interference with native css values.
+
+For example `1` or `2` is a valid native value for `gridColumn` or `gridRow`, and should not be overridden by the
+utility.
+
+Find the previous default values below, you can add them back to your config if you need them.
+
+```ts
+const utilities = {
+  gridTemplateColumns: {
+    className: 'grid-tc',
+    group: 'Grid Layout',
+    values: {
+      '1': 'repeat(1, minmax(0, 1fr))',
+      '2': 'repeat(2, minmax(0, 1fr))',
+      '3': 'repeat(3, minmax(0, 1fr))',
+      '4': 'repeat(4, minmax(0, 1fr))',
+      '5': 'repeat(5, minmax(0, 1fr))',
+      '6': 'repeat(6, minmax(0, 1fr))',
+      '7': 'repeat(7, minmax(0, 1fr))',
+      '8': 'repeat(8, minmax(0, 1fr))',
+      '9': 'repeat(9, minmax(0, 1fr))',
+      '10': 'repeat(10, minmax(0, 1fr))',
+      '11': 'repeat(11, minmax(0, 1fr))',
+      '12': 'repeat(12, minmax(0, 1fr))',
+    },
+  },
+  gridTemplateRows: {
+    className: 'grid-tr',
+    group: 'Grid Layout',
+    values: {
+      '1': 'repeat(1, minmax(0, 1fr))',
+      '2': 'repeat(2, minmax(0, 1fr))',
+      '3': 'repeat(3, minmax(0, 1fr))',
+      '4': 'repeat(4, minmax(0, 1fr))',
+      '5': 'repeat(5, minmax(0, 1fr))',
+      '6': 'repeat(6, minmax(0, 1fr))',
+      '7': 'repeat(7, minmax(0, 1fr))',
+      '8': 'repeat(8, minmax(0, 1fr))',
+      '9': 'repeat(9, minmax(0, 1fr))',
+      '10': 'repeat(10, minmax(0, 1fr))',
+      '11': 'repeat(11, minmax(0, 1fr))',
+      '12': 'repeat(12, minmax(0, 1fr))',
+    },
+  },
+  gridColumn: {
+    className: 'grid-c',
+    group: 'Grid Layout',
+    values: {
+      full: '1 / -1',
+      '1': 'span 1 / span 1',
+      '2': 'span 2 / span 2',
+      '3': 'span 3 / span 3',
+      '4': 'span 4 / span 4',
+      '5': 'span 5 / span 5',
+      '6': 'span 6 / span 6',
+      '7': 'span 7 / span 7',
+      '8': 'span 8 / span 8',
+      '9': 'span 9 / span 9',
+      '10': 'span 10 / span 10',
+      '11': 'span 11 / span 11',
+      '12': 'span 12 / span 12',
+    },
+  },
+  gridRow: {
+    className: 'grid-r',
+    group: 'Grid Layout',
+    values: {
+      full: '1 / -1',
+      '1': 'span 1 / span 1',
+      '2': 'span 2 / span 2',
+      '3': 'span 3 / span 3',
+      '4': 'span 4 / span 4',
+      '5': 'span 5 / span 5',
+      '6': 'span 6 / span 6',
+      '7': 'span 7 / span 7',
+      '8': 'span 8 / span 8',
+      '9': 'span 9 / span 9',
+      '10': 'span 10 / span 10',
+      '11': 'span 11 / span 11',
+      '12': 'span 12 / span 12',
+    },
+  },
+}
+```
+
+## [0.47.1] - 2024-11-06
+
+### Fixed
+
+- Fix postcss; race condition on builder instance for simultaneous plugin invocations
+- Fix issue where token reference in composite border token generates incorrect css.
+
 ## [0.47.0] - 2024-10-18
 
 ### Added

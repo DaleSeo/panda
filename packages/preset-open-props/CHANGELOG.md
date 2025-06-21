@@ -1,5 +1,112 @@
 # @pandacss/preset-open-props
 
+## 0.54.0
+
+### Patch Changes
+
+- @pandacss/types@0.54.0
+
+## 0.53.7
+
+### Patch Changes
+
+- @pandacss/types@0.53.7
+
+## 0.53.6
+
+### Patch Changes
+
+- @pandacss/types@0.53.6
+
+## 0.53.5
+
+### Patch Changes
+
+- @pandacss/types@0.53.5
+
+## 0.53.4
+
+### Patch Changes
+
+- @pandacss/types@0.53.4
+
+## 0.53.3
+
+### Patch Changes
+
+- @pandacss/types@0.53.3
+
+## 0.53.2
+
+### Patch Changes
+
+- @pandacss/types@0.53.2
+
+## 0.53.1
+
+### Patch Changes
+
+- @pandacss/types@0.53.1
+
+## 0.53.0
+
+### Patch Changes
+
+- Updated dependencies [5286731]
+  - @pandacss/types@0.53.0
+
+## 0.52.0
+
+### Patch Changes
+
+- @pandacss/types@0.52.0
+
+## 0.51.1
+
+### Patch Changes
+
+- @pandacss/types@0.51.1
+
+## 0.51.0
+
+### Patch Changes
+
+- Updated dependencies [d68ad1f]
+  - @pandacss/types@0.51.0
+
+## 0.50.0
+
+### Patch Changes
+
+- Updated dependencies [fea78c7]
+- Updated dependencies [ad89b90]
+  - @pandacss/types@0.50.0
+
+## 0.49.0
+
+### Patch Changes
+
+- Updated dependencies [97a0e4d]
+  - @pandacss/types@0.49.0
+
+## 0.48.1
+
+### Patch Changes
+
+- @pandacss/types@0.48.1
+
+## 0.48.0
+
+### Patch Changes
+
+- @pandacss/types@0.48.0
+
+## 0.47.1
+
+### Patch Changes
+
+- @pandacss/types@0.47.1
+
 ## 0.47.0
 
 ### Patch Changes

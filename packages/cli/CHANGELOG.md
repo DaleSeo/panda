@@ -1,5 +1,345 @@
 # @pandacss/dev
 
+## 0.54.0
+
+### Patch Changes
+
+- Updated dependencies [76c4e61]
+- Updated dependencies [efa060d]
+- Updated dependencies [d2aede5]
+- Updated dependencies [fdf5142]
+  - @pandacss/node@0.54.0
+  - @pandacss/shared@0.54.0
+  - @pandacss/token-dictionary@0.54.0
+  - @pandacss/postcss@0.54.0
+  - @pandacss/config@0.54.0
+  - @pandacss/types@0.54.0
+  - @pandacss/logger@0.54.0
+  - @pandacss/preset-panda@0.54.0
+
+## 0.53.7
+
+### Patch Changes
+
+- @pandacss/node@0.53.7
+- @pandacss/postcss@0.53.7
+- @pandacss/config@0.53.7
+- @pandacss/logger@0.53.7
+- @pandacss/preset-panda@0.53.7
+- @pandacss/shared@0.53.7
+- @pandacss/token-dictionary@0.53.7
+- @pandacss/types@0.53.7
+
+## 0.53.6
+
+### Patch Changes
+
+- @pandacss/node@0.53.6
+- @pandacss/postcss@0.53.6
+- @pandacss/config@0.53.6
+- @pandacss/logger@0.53.6
+- @pandacss/preset-panda@0.53.6
+- @pandacss/shared@0.53.6
+- @pandacss/token-dictionary@0.53.6
+- @pandacss/types@0.53.6
+
+## 0.53.5
+
+### Patch Changes
+
+- @pandacss/node@0.53.5
+- @pandacss/config@0.53.5
+- @pandacss/postcss@0.53.5
+- @pandacss/logger@0.53.5
+- @pandacss/preset-panda@0.53.5
+- @pandacss/shared@0.53.5
+- @pandacss/token-dictionary@0.53.5
+- @pandacss/types@0.53.5
+
+## 0.53.4
+
+### Patch Changes
+
+- @pandacss/node@0.53.4
+- @pandacss/postcss@0.53.4
+- @pandacss/config@0.53.4
+- @pandacss/logger@0.53.4
+- @pandacss/preset-panda@0.53.4
+- @pandacss/shared@0.53.4
+- @pandacss/token-dictionary@0.53.4
+- @pandacss/types@0.53.4
+
+## 0.53.3
+
+### Patch Changes
+
+- @pandacss/config@0.53.3
+- @pandacss/node@0.53.3
+- @pandacss/postcss@0.53.3
+- @pandacss/logger@0.53.3
+- @pandacss/preset-panda@0.53.3
+- @pandacss/shared@0.53.3
+- @pandacss/token-dictionary@0.53.3
+- @pandacss/types@0.53.3
+
+## 0.53.2
+
+### Patch Changes
+
+- Updated dependencies [cde9a0b]
+  - @pandacss/config@0.53.2
+  - @pandacss/node@0.53.2
+  - @pandacss/postcss@0.53.2
+  - @pandacss/logger@0.53.2
+  - @pandacss/preset-panda@0.53.2
+  - @pandacss/shared@0.53.2
+  - @pandacss/token-dictionary@0.53.2
+  - @pandacss/types@0.53.2
+
+## 0.53.1
+
+### Patch Changes
+
+- Updated dependencies [b67a2a5]
+  - @pandacss/node@0.53.1
+  - @pandacss/postcss@0.53.1
+  - @pandacss/config@0.53.1
+  - @pandacss/logger@0.53.1
+  - @pandacss/preset-panda@0.53.1
+  - @pandacss/shared@0.53.1
+  - @pandacss/token-dictionary@0.53.1
+  - @pandacss/types@0.53.1
+
+## 0.53.0
+
+### Patch Changes
+
+- Updated dependencies [5286731]
+  - @pandacss/types@0.53.0
+  - @pandacss/node@0.53.0
+  - @pandacss/config@0.53.0
+  - @pandacss/logger@0.53.0
+  - @pandacss/preset-panda@0.53.0
+  - @pandacss/token-dictionary@0.53.0
+  - @pandacss/postcss@0.53.0
+  - @pandacss/shared@0.53.0
+
+## 0.52.0
+
+### Patch Changes
+
+- Updated dependencies [2f1165c]
+  - @pandacss/node@0.52.0
+  - @pandacss/config@0.52.0
+  - @pandacss/postcss@0.52.0
+  - @pandacss/logger@0.52.0
+  - @pandacss/preset-panda@0.52.0
+  - @pandacss/shared@0.52.0
+  - @pandacss/token-dictionary@0.52.0
+  - @pandacss/types@0.52.0
+
+## 0.51.1
+
+### Patch Changes
+
+- 9c1327e: Redesigned the recipe report to be more readable and easier to understand. We simplified the `JSX` and
+  `Function` columns to be more concise.
+
+  **BEFORE**
+
+  ```sh
+  ╔════════════════════════╤══════════════════════╤═════════╤═══════╤════════════╤═══════════════════╤══════════╗
+  ║ Recipe                 │ Variant Combinations │ Usage % │ JSX % │ Function % │ Most Used         │ Found in ║
+  ╟────────────────────────┼──────────────────────┼─────────┼───────┼────────────┼───────────────────┼──────────╢
+  ║ someRecipe (1 variant) │ 1 / 1                │ 100%    │ 100%  │ 0%         │ size.small        │ 1 file   ║
+  ╟────────────────────────┼──────────────────────┼─────────┼───────┼────────────┼───────────────────┼──────────╢
+  ║ button (4 variants)    │ 7 / 9                │ 77.78%  │ 63%   │ 38%        │ size.md, size.sm, │ 2 files  ║
+  ║                        │                      │         │       │            │ state.focused,    │          ║
+  ║                        │                      │         │       │            │ variant.danger,   │          ║
+  ║                        │                      │         │       │            │ variant.primary   │          ║
+  ╚════════════════════════╧══════════════════════╧═════════╧═══════╧════════════╧═══════════════════╧══════════╝
+  ```
+
+  **AFTER**
+
+  ```sh
+  ╔════════════════════════╤════════════════╤═══════════════════╤═══════════════════╤══════════╤═══════════╗
+  ║ Recipe                 │ Variant values │ Usage %           │ Most used         │ Found in │ Used as   ║
+  ╟────────────────────────┼────────────────┼───────────────────┼───────────────────┼──────────┼───────────╢
+  ║ someRecipe (1 variant) │ 1 value        │ 100% (1 value)    │ size.small        │ 1 file   │ jsx: 100% ║
+  ║                        │                │                   │                   │          │ fn: 0%    ║
+  ╟────────────────────────┼────────────────┼───────────────────┼───────────────────┼──────────┼───────────╢
+  ║ button (4 variants)    │ 9 values       │ 77.78% (7 values) │ size.md, size.sm, │ 2 files  │ jsx: 63%  ║
+  ║                        │                │                   │ state.focused,    │          │ fn: 38%   ║
+  ║                        │                │                   │ variant.danger,   │          │           ║
+  ║                        │                │                   │ variant.primary   │          │           ║
+  ╚════════════════════════╧════════════════╧═══════════════════╧═══════════════════╧══════════╧═══════════╝
+  ```
+
+  - @pandacss/node@0.51.1
+  - @pandacss/postcss@0.51.1
+  - @pandacss/config@0.51.1
+  - @pandacss/logger@0.51.1
+  - @pandacss/preset-panda@0.51.1
+  - @pandacss/shared@0.51.1
+  - @pandacss/token-dictionary@0.51.1
+  - @pandacss/types@0.51.1
+
+## 0.51.0
+
+### Patch Changes
+
+- Updated dependencies [d68ad1f]
+  - @pandacss/config@0.51.0
+  - @pandacss/types@0.51.0
+  - @pandacss/node@0.51.0
+  - @pandacss/logger@0.51.0
+  - @pandacss/preset-panda@0.51.0
+  - @pandacss/token-dictionary@0.51.0
+  - @pandacss/postcss@0.51.0
+  - @pandacss/shared@0.51.0
+
+## 0.50.0
+
+### Minor Changes
+
+- fea78c7: Adds support for static analysis of used tokens and recipe variants. It helps to get a birds-eye view of how
+  your design system is used and answers the following questions:
+
+  - What tokens are most used?
+  - What recipe variants are most used?
+  - How many hardcoded values vs tokens do we have?
+
+  ```sh
+  panda analyze --scope=<token|recipe>
+  ```
+
+  > Still work in progress but we're excited to get your feedback!
+
+### Patch Changes
+
+- Updated dependencies [fea78c7]
+- Updated dependencies [ad89b90]
+  - @pandacss/types@0.50.0
+  - @pandacss/node@0.50.0
+  - @pandacss/token-dictionary@0.50.0
+  - @pandacss/config@0.50.0
+  - @pandacss/logger@0.50.0
+  - @pandacss/preset-panda@0.50.0
+  - @pandacss/postcss@0.50.0
+  - @pandacss/shared@0.50.0
+
+## 0.49.0
+
+### Minor Changes
+
+- 97a0e4d: Add support for animation styles. Animation styles focus solely on animations, allowing you to orchestrate
+  animation properties.
+
+  > Pairing animation styles with text styles and layer styles can make your styles a lot cleaner.
+
+  Here's an example of this:
+
+  ```jsx
+  import { defineAnimationStyles } from '@pandacss/dev'
+
+  export const animationStyles = defineAnimationStyles({
+    'slide-fade-in': {
+      value: {
+        transformOrigin: 'var(--transform-origin)',
+        animationDuration: 'fast',
+        '&[data-placement^=top]': {
+          animationName: 'slide-from-top, fade-in',
+        },
+        '&[data-placement^=bottom]': {
+          animationName: 'slide-from-bottom, fade-in',
+        },
+        '&[data-placement^=left]': {
+          animationName: 'slide-from-left, fade-in',
+        },
+        '&[data-placement^=right]': {
+          animationName: 'slide-from-right, fade-in',
+        },
+      },
+    },
+  })
+  ```
+
+  With that defined, I can use it in my recipe or css like so:
+
+  ```js
+  export const popoverSlotRecipe = defineSlotRecipe({
+    slots: anatomy.keys(),
+    base: {
+      content: {
+        _open: {
+          animationStyle: 'scale-fade-in',
+        },
+        _closed: {
+          animationStyle: 'scale-fade-out',
+        },
+      },
+    },
+  })
+  ```
+
+  This feature will drive consumers to lean in towards CSS for animations rather than JS. Composing animation names is a
+  powerful feature we should encourage consumers to use.
+
+### Patch Changes
+
+- Updated dependencies [97a0e4d]
+  - @pandacss/preset-panda@0.49.0
+  - @pandacss/types@0.49.0
+  - @pandacss/config@0.49.0
+  - @pandacss/node@0.49.0
+  - @pandacss/logger@0.49.0
+  - @pandacss/token-dictionary@0.49.0
+  - @pandacss/postcss@0.49.0
+  - @pandacss/shared@0.49.0
+
+## 0.48.1
+
+### Patch Changes
+
+- Updated dependencies [fd87f3a]
+  - @pandacss/node@0.48.1
+  - @pandacss/postcss@0.48.1
+  - @pandacss/config@0.48.1
+  - @pandacss/logger@0.48.1
+  - @pandacss/preset-panda@0.48.1
+  - @pandacss/shared@0.48.1
+  - @pandacss/token-dictionary@0.48.1
+  - @pandacss/types@0.48.1
+
+## 0.48.0
+
+### Patch Changes
+
+- @pandacss/config@0.48.0
+- @pandacss/node@0.48.0
+- @pandacss/postcss@0.48.0
+- @pandacss/logger@0.48.0
+- @pandacss/preset-panda@0.48.0
+- @pandacss/shared@0.48.0
+- @pandacss/token-dictionary@0.48.0
+- @pandacss/types@0.48.0
+
+## 0.47.1
+
+### Patch Changes
+
+- Updated dependencies [50fc8ef]
+- Updated dependencies [144113f]
+  - @pandacss/postcss@0.47.1
+  - @pandacss/token-dictionary@0.47.1
+  - @pandacss/node@0.47.1
+  - @pandacss/config@0.47.1
+  - @pandacss/logger@0.47.1
+  - @pandacss/preset-panda@0.47.1
+  - @pandacss/shared@0.47.1
+  - @pandacss/types@0.47.1
+
 ## 0.47.0
 
 ### Patch Changes

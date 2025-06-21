@@ -458,12 +458,12 @@ describe('style encoder', () => {
       "@layer recipes {
         @layer _base {
           .btn {
-            display: inline-flex;
             outline: var(--borders-none);
             line-height: 1.2;
+            display: inline-flex;
       }
 
-          .btn:is(:disabled, [disabled], [data-disabled]) {
+          .btn:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
             opacity: 0.4;
       }
 
@@ -475,7 +475,7 @@ describe('style encoder', () => {
             z-index: 1;
       }
 
-          .btn:is(:hover, [data-hover]):is(:disabled, [disabled], [data-disabled]) {
+          .btn:is(:hover, [data-hover]):is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
             background: initial;
       }
           }
@@ -734,6 +734,46 @@ describe('style encoder', () => {
     expect(result).toMatchInlineSnapshot(`
       Set {
         "truncate]___[value:false",
+      }
+    `)
+  })
+
+  test('static css - recipes', () => {
+    const ctx = createGeneratorContext()
+    ctx.staticCss.process({ recipes: '*' })
+    expect(ctx.encoder.toJSON()).toMatchInlineSnapshot(`
+      {
+        "schemaVersion": "x.x.x",
+        "styles": {
+          "atomic": [
+            "color]___[value:ButtonHighlight",
+          ],
+          "recipes": {
+            "badge": [
+              "size]___[value:sm]___[recipe:badge",
+              "raised]___[value:true]___[recipe:badge",
+            ],
+            "buttonStyle": [
+              "size]___[value:md]___[recipe:buttonStyle",
+              "variant]___[value:solid]___[recipe:buttonStyle",
+              "size]___[value:sm]___[recipe:buttonStyle",
+              "variant]___[value:outline]___[recipe:buttonStyle",
+            ],
+            "cardStyle": [
+              "rounded]___[value:true]___[recipe:cardStyle",
+            ],
+            "checkbox": [
+              "size]___[value:sm]___[recipe:checkbox",
+              "size]___[value:md]___[recipe:checkbox",
+              "size]___[value:lg]___[recipe:checkbox",
+            ],
+            "textStyle": [
+              "size]___[value:h1]___[recipe:textStyle",
+              "size]___[value:h2]___[recipe:textStyle",
+            ],
+            "tooltipStyle": [],
+          },
+        },
       }
     `)
   })

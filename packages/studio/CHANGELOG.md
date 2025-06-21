@@ -1,5 +1,206 @@
 # @pandacss/studio
 
+## 0.54.0
+
+### Patch Changes
+
+- cd9361e: Fix issue where text (or layer) styles that use conditions don't render correctly.
+- Updated dependencies [efa060d]
+- Updated dependencies [cd9361e]
+- Updated dependencies [d2aede5]
+- Updated dependencies [fdf5142]
+  - @pandacss/shared@0.54.0
+  - @pandacss/astro-plugin-studio@0.54.0
+  - @pandacss/token-dictionary@0.54.0
+  - @pandacss/config@0.54.0
+  - @pandacss/types@0.54.0
+  - @pandacss/logger@0.54.0
+
+## 0.53.7
+
+### Patch Changes
+
+- @pandacss/astro-plugin-studio@0.53.7
+- @pandacss/config@0.53.7
+- @pandacss/logger@0.53.7
+- @pandacss/shared@0.53.7
+- @pandacss/token-dictionary@0.53.7
+- @pandacss/types@0.53.7
+
+## 0.53.6
+
+### Patch Changes
+
+- @pandacss/astro-plugin-studio@0.53.6
+- @pandacss/config@0.53.6
+- @pandacss/logger@0.53.6
+- @pandacss/shared@0.53.6
+- @pandacss/token-dictionary@0.53.6
+- @pandacss/types@0.53.6
+
+## 0.53.5
+
+### Patch Changes
+
+- 5237195: fix(studio): can't render semantic color token without base definition
+  - @pandacss/config@0.53.5
+  - @pandacss/astro-plugin-studio@0.53.5
+  - @pandacss/logger@0.53.5
+  - @pandacss/shared@0.53.5
+  - @pandacss/token-dictionary@0.53.5
+  - @pandacss/types@0.53.5
+
+## 0.53.4
+
+### Patch Changes
+
+- @pandacss/astro-plugin-studio@0.53.4
+- @pandacss/config@0.53.4
+- @pandacss/logger@0.53.4
+- @pandacss/shared@0.53.4
+- @pandacss/token-dictionary@0.53.4
+- @pandacss/types@0.53.4
+
+## 0.53.3
+
+### Patch Changes
+
+- 00aa868: Add cursor utility config
+  - @pandacss/config@0.53.3
+  - @pandacss/astro-plugin-studio@0.53.3
+  - @pandacss/logger@0.53.3
+  - @pandacss/shared@0.53.3
+  - @pandacss/token-dictionary@0.53.3
+  - @pandacss/types@0.53.3
+
+## 0.53.2
+
+### Patch Changes
+
+- Updated dependencies [cde9a0b]
+  - @pandacss/config@0.53.2
+  - @pandacss/astro-plugin-studio@0.53.2
+  - @pandacss/logger@0.53.2
+  - @pandacss/shared@0.53.2
+  - @pandacss/token-dictionary@0.53.2
+  - @pandacss/types@0.53.2
+
+## 0.53.1
+
+### Patch Changes
+
+- @pandacss/astro-plugin-studio@0.53.1
+- @pandacss/config@0.53.1
+- @pandacss/logger@0.53.1
+- @pandacss/shared@0.53.1
+- @pandacss/token-dictionary@0.53.1
+- @pandacss/types@0.53.1
+
+## 0.53.0
+
+### Patch Changes
+
+- Updated dependencies [5286731]
+  - @pandacss/types@0.53.0
+  - @pandacss/config@0.53.0
+  - @pandacss/logger@0.53.0
+  - @pandacss/token-dictionary@0.53.0
+  - @pandacss/astro-plugin-studio@0.53.0
+  - @pandacss/shared@0.53.0
+
+## 0.52.0
+
+### Patch Changes
+
+- @pandacss/config@0.52.0
+- @pandacss/astro-plugin-studio@0.52.0
+- @pandacss/logger@0.52.0
+- @pandacss/shared@0.52.0
+- @pandacss/token-dictionary@0.52.0
+- @pandacss/types@0.52.0
+
+## 0.51.1
+
+### Patch Changes
+
+- @pandacss/astro-plugin-studio@0.51.1
+- @pandacss/config@0.51.1
+- @pandacss/logger@0.51.1
+- @pandacss/shared@0.51.1
+- @pandacss/token-dictionary@0.51.1
+- @pandacss/types@0.51.1
+
+## 0.51.0
+
+### Patch Changes
+
+- Updated dependencies [d68ad1f]
+  - @pandacss/config@0.51.0
+  - @pandacss/types@0.51.0
+  - @pandacss/logger@0.51.0
+  - @pandacss/token-dictionary@0.51.0
+  - @pandacss/astro-plugin-studio@0.51.0
+  - @pandacss/shared@0.51.0
+
+## 0.50.0
+
+### Patch Changes
+
+- Updated dependencies [fea78c7]
+- Updated dependencies [ad89b90]
+  - @pandacss/types@0.50.0
+  - @pandacss/token-dictionary@0.50.0
+  - @pandacss/config@0.50.0
+  - @pandacss/logger@0.50.0
+  - @pandacss/astro-plugin-studio@0.50.0
+  - @pandacss/shared@0.50.0
+
+## 0.49.0
+
+### Patch Changes
+
+- Updated dependencies [97a0e4d]
+  - @pandacss/types@0.49.0
+  - @pandacss/config@0.49.0
+  - @pandacss/logger@0.49.0
+  - @pandacss/token-dictionary@0.49.0
+  - @pandacss/astro-plugin-studio@0.49.0
+  - @pandacss/shared@0.49.0
+
+## 0.48.1
+
+### Patch Changes
+
+- @pandacss/astro-plugin-studio@0.48.1
+- @pandacss/config@0.48.1
+- @pandacss/logger@0.48.1
+- @pandacss/shared@0.48.1
+- @pandacss/token-dictionary@0.48.1
+- @pandacss/types@0.48.1
+
+## 0.48.0
+
+### Patch Changes
+
+- @pandacss/config@0.48.0
+- @pandacss/astro-plugin-studio@0.48.0
+- @pandacss/logger@0.48.0
+- @pandacss/shared@0.48.0
+- @pandacss/token-dictionary@0.48.0
+- @pandacss/types@0.48.0
+
+## 0.47.1
+
+### Patch Changes
+
+- Updated dependencies [144113f]
+  - @pandacss/token-dictionary@0.47.1
+  - @pandacss/astro-plugin-studio@0.47.1
+  - @pandacss/config@0.47.1
+  - @pandacss/logger@0.47.1
+  - @pandacss/shared@0.47.1
+  - @pandacss/types@0.47.1
+
 ## 0.47.0
 
 ### Patch Changes

@@ -4,6 +4,8 @@ import chokidar from 'chokidar'
 import glob from 'fast-glob'
 import fsExtra from 'fs-extra'
 import { dirname, extname, isAbsolute, join, relative, resolve, sep } from 'path'
+import picomatch from 'picomatch'
+import { globDirname } from './glob-dirname'
 
 export const nodeRuntime: Runtime = {
   cwd() {
@@ -50,16 +52,24 @@ export const nodeRuntime: Runtime = {
     watch(options) {
       const { include, exclude, cwd, poll } = options
       const coalesce = poll || process.platform === 'win32'
-      const watcher = chokidar.watch(include, {
+
+      const dirnames = globDirname(include)
+      const isValidPath = picomatch(include, { cwd, ignore: exclude })
+      const workingDir = cwd || process.cwd()
+
+      const watcher = chokidar.watch(dirnames, {
         usePolling: poll,
         cwd,
+        ignored(path, stats) {
+          const relativePath = relative(workingDir, path)
+          return !!stats?.isFile() && !isValidPath(relativePath)
+        },
         ignoreInitial: true,
         ignorePermissionErrors: true,
-        ignored: exclude,
         awaitWriteFinish: coalesce ? { stabilityThreshold: 50, pollInterval: 10 } : false,
       })
 
-      logger.debug('watch:file', `watching [${include}]`)
+      logger.debug('watch:file', `Watching [ ${dirnames.join(', ')} ]`)
 
       process.once('SIGINT', async () => {
         await watcher.close()

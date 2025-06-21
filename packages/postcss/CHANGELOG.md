@@ -1,5 +1,114 @@
 # @pandacss/postcss
 
+## 0.54.0
+
+### Patch Changes
+
+- Updated dependencies [76c4e61]
+  - @pandacss/node@0.54.0
+
+## 0.53.7
+
+### Patch Changes
+
+- @pandacss/node@0.53.7
+
+## 0.53.6
+
+### Patch Changes
+
+- @pandacss/node@0.53.6
+
+## 0.53.5
+
+### Patch Changes
+
+- @pandacss/node@0.53.5
+
+## 0.53.4
+
+### Patch Changes
+
+- @pandacss/node@0.53.4
+
+## 0.53.3
+
+### Patch Changes
+
+- @pandacss/node@0.53.3
+
+## 0.53.2
+
+### Patch Changes
+
+- @pandacss/node@0.53.2
+
+## 0.53.1
+
+### Patch Changes
+
+- Updated dependencies [b67a2a5]
+  - @pandacss/node@0.53.1
+
+## 0.53.0
+
+### Patch Changes
+
+- @pandacss/node@0.53.0
+
+## 0.52.0
+
+### Patch Changes
+
+- Updated dependencies [2f1165c]
+  - @pandacss/node@0.52.0
+
+## 0.51.1
+
+### Patch Changes
+
+- @pandacss/node@0.51.1
+
+## 0.51.0
+
+### Patch Changes
+
+- Updated dependencies [d68ad1f]
+  - @pandacss/node@0.51.0
+
+## 0.50.0
+
+### Patch Changes
+
+- Updated dependencies [fea78c7]
+  - @pandacss/node@0.50.0
+
+## 0.49.0
+
+### Patch Changes
+
+- @pandacss/node@0.49.0
+
+## 0.48.1
+
+### Patch Changes
+
+- Updated dependencies [fd87f3a]
+  - @pandacss/node@0.48.1
+
+## 0.48.0
+
+### Patch Changes
+
+- @pandacss/node@0.48.0
+
+## 0.47.1
+
+### Patch Changes
+
+- 50fc8ef: fix(postcss): race condition on builder instance for simultaneous plugin invocations
+  - @pandacss/node@0.47.1
+
 ## 0.47.0
 
 ### Patch Changes

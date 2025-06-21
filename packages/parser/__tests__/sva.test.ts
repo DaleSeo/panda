@@ -192,20 +192,20 @@ describe('ast parser / sva', () => {
           margin: var(--spacing-4);
       }
 
-        .w_md {
-          width: var(--sizes-md);
+        .bdr_md {
+          border-radius: var(--radii-md);
       }
 
         .bx-sh_md {
           box-shadow: var(--shadows-md);
       }
 
-        .bdr_md {
-          border-radius: var(--radii-md);
-      }
-
         .fw_semibold {
           font-weight: var(--font-weights-semibold);
+      }
+
+        .w_md {
+          width: var(--sizes-md);
       }
 
         .pb_2 {
@@ -263,6 +263,32 @@ describe('ast parser / sva', () => {
       "@layer utilities {
         .p_6 {
           padding: var(--spacing-6);
+      }
+      }"
+    `)
+  })
+
+  test('unresolvable + concat - spread', () => {
+    const code = `
+      import { anatomy } from '@/slots'
+      import { sva } from 'styled-system/css'
+
+      const card = sva({
+        slots: [...anatomy().keys(), 'slots', 'here'],
+        className: 'tt',
+        base: {
+          a: {
+            backgroundColor: 'red',
+          },
+        },
+      })
+     `
+
+    const result = parseAndExtract(code)
+    expect(result.css).toMatchInlineSnapshot(`
+      "@layer utilities {
+        .bg-c_red {
+          background-color: red;
       }
       }"
     `)

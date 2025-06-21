@@ -193,12 +193,12 @@ describe('sort style rules', () => {
       "@layer recipes {
         @layer _base {
           .btn {
-            display: inline-flex;
             outline: var(--borders-none);
             line-height: 1.2;
+            display: inline-flex;
       }
 
-          .btn:is(:disabled, [disabled], [data-disabled]) {
+          .btn:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
             opacity: 0.4;
       }
 
@@ -210,7 +210,7 @@ describe('sort style rules', () => {
             z-index: 1;
       }
 
-          .btn:is(:hover, [data-hover]):is(:disabled, [disabled], [data-disabled]) {
+          .btn:is(:hover, [data-hover]):is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
             background: initial;
       }
       }
@@ -241,12 +241,12 @@ describe('sort style rules', () => {
       "@layer recipes {
         @layer _base {
           .btn {
-            display: inline-flex;
             outline: var(--borders-none);
             line-height: 1.2;
+            display: inline-flex;
       }
 
-          .btn:is(:disabled, [disabled], [data-disabled]) {
+          .btn:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
             opacity: 0.4;
       }
 
@@ -258,7 +258,7 @@ describe('sort style rules', () => {
             z-index: 1;
       }
 
-          .btn:is(:hover, [data-hover]):is(:disabled, [disabled], [data-disabled]) {
+          .btn:is(:hover, [data-hover]):is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
             background: initial;
       }
       }

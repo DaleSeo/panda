@@ -359,7 +359,7 @@ describe('atomic / with grouped conditions styles', () => {
     ).toMatchInlineSnapshot(`
       "@layer utilities {
         @media screen and (min-width: 40rem) {
-          .hover\\:disabled\\:sm\\:bg_red\\.300:is(:hover, [data-hover]):is(:disabled, [disabled], [data-disabled]) {
+          .hover\\:disabled\\:sm\\:bg_red\\.300:is(:hover, [data-hover]):is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) {
             background: var(--colors-red-300);
       }
       }
@@ -470,10 +470,6 @@ describe('atomic / with direct nesting', () => {
           border-radius: $button;
       }
 
-        .cursor_pointer {
-          cursor: pointer;
-      }
-
         .bg-c_red {
           background-color: red;
       }
@@ -482,16 +478,20 @@ describe('atomic / with direct nesting', () => {
           font-size: $xsmall;
       }
 
+        .cursor_pointer {
+          cursor: pointer;
+      }
+
+        .test .\\[\\.test_\\&\\]\\:bg-c_blue {
+          background-color: blue;
+      }
+
         .\\[\\&_\\.my-class\\]\\:c_red .my-class,.\\[\\&_span\\]\\:c_red span {
           color: red;
       }
 
         .\\[\\&_\\+_span\\]\\:ml_\\$2 + span {
           margin-left: $2;
-      }
-
-        .test .\\[\\.test_\\&\\]\\:bg-c_blue {
-          background-color: blue;
       }
 
         .\\[\\&\\:focus\\,_\\&\\:hover\\]\\:bx-sh_none:focus,.\\[\\&\\:focus\\,_\\&\\:hover\\]\\:bx-sh_none:hover {
@@ -666,6 +666,32 @@ describe('atomic / with direct nesting', () => {
       "@layer utilities {
         .bg_\\$blue-400 {
           background: var(--colors---blue---400);
+      }
+      }"
+    `)
+  })
+
+  test('responsive helpers', () => {
+    expect(
+      css({
+        hideFrom: 'sm',
+      }),
+    ).toMatchInlineSnapshot(`
+      "@layer utilities {
+        @media screen and (min-width: 40rem) {
+          .hide_sm {
+            display: none;
+      }
+      }
+      }"
+    `)
+
+    expect(css({ hideBelow: 'lg' })).toMatchInlineSnapshot(`
+      "@layer utilities {
+        @media screen and (max-width: 63.9975rem) {
+          .show_lg {
+            display: none;
+      }
       }
       }"
     `)
