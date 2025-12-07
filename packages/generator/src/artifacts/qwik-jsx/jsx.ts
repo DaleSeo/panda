@@ -19,7 +19,10 @@ export function generateQwikJsxFactory(ctx: Context) {
       const cvaFn = configOrCva.__cva__ || configOrCva.__recipe__ ? configOrCva : cva(configOrCva)
 
       const forwardFn = options.shouldForwardProp || defaultShouldForwardProp
-      const shouldForwardProp = (prop) => forwardFn(prop, cvaFn.variantKeys)
+      const shouldForwardProp = (prop) => {
+        if (options.forwardProps?.includes(prop)) return true
+        return forwardFn(prop, cvaFn.variantKeys)
+      }
 
       const defaultProps = Object.assign(
         options.dataAttr && configOrCva.__name__ ? { 'data-recipe': configOrCva.__name__ } : {},
@@ -31,7 +34,7 @@ export function generateQwikJsxFactory(ctx: Context) {
       const __base__ = Dynamic.__base__ || Dynamic
 
       const ${componentName} = function ${componentName}(props) {
-        const { as: Element = __base__, children, className, ...restProps } = props
+        const { as: Element = __base__, unstyled, children, className, ...restProps } = props
 
         const combinedProps = Object.assign({}, defaultProps, restProps)
 
@@ -52,14 +55,20 @@ export function generateQwikJsxFactory(ctx: Context) {
           return cx(css(cvaStyles, propStyles, cssStyles), combinedProps.class, className)
         }
 
-        const classes = configOrCva.__recipe__ ? recipeClass : cvaClass
+        const classes = () => {
+          if (unstyled) {
+            const { css: cssStyles, ...propStyles } = styleProps
+            return cx(css(propStyles, cssStyles), combinedProps.class, className)
+          }
+          return configOrCva.__recipe__ ? recipeClass() : cvaClass()
+        }
 
         return h(Element, {
           ...forwardedProps,
           ...elementProps,
           ...normalizeHTMLProps(htmlProps),
           class: classes(),
-        }, combinedProps.children ?? children)
+        }, children ?? combinedProps.children)
       }
 
       const name = getDisplayName(__base__)

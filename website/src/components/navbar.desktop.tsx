@@ -11,7 +11,7 @@ import { ThemeSwitchIconButton } from './theme-switch-button'
 export const DesktopNavBar = () => {
   return (
     <HStack
-      bg="bg.inverted"
+      bg="bg"
       shadow="lg"
       height="16"
       py="5"
@@ -30,7 +30,8 @@ export const DesktopNavBar = () => {
 
       <HStack gap="4">
         <NavLink href="/docs">Docs</NavLink>
-        <NavLink href="/learn">Learn</NavLink>
+        <NavLink href="/team">Team</NavLink>
+        <NavLink href="/showcase">Showcase</NavLink>
         <NavLink href="https://play.panda-css.com/" isExternal>
           Playground
         </NavLink>

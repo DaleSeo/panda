@@ -1,5 +1,229 @@
 # @pandacss/studio
 
+## 1.6.1
+
+### Patch Changes
+
+- @pandacss/astro-plugin-studio@1.6.1
+- @pandacss/config@1.6.1
+- @pandacss/logger@1.6.1
+- @pandacss/shared@1.6.1
+- @pandacss/token-dictionary@1.6.1
+- @pandacss/types@1.6.1
+
+## 1.6.0
+
+### Patch Changes
+
+- 9af6a12: ### Fixed
+
+  - Fix semantic tokens defined in `defineTheme` not showing in Panda Studio. We now show a theme selector in the token
+    pages for the theme-aware tokens.
+  - Improve performance when searching for tokens.
+  - @pandacss/astro-plugin-studio@1.6.0
+  - @pandacss/config@1.6.0
+  - @pandacss/logger@1.6.0
+  - @pandacss/shared@1.6.0
+  - @pandacss/token-dictionary@1.6.0
+  - @pandacss/types@1.6.0
+
+## 1.5.1
+
+### Patch Changes
+
+- @pandacss/astro-plugin-studio@1.5.1
+- @pandacss/config@1.5.1
+- @pandacss/logger@1.5.1
+- @pandacss/shared@1.5.1
+- @pandacss/token-dictionary@1.5.1
+- @pandacss/types@1.5.1
+
+## 1.5.0
+
+### Patch Changes
+
+- Updated dependencies [91c65ff]
+  - @pandacss/types@1.5.0
+  - @pandacss/token-dictionary@1.5.0
+  - @pandacss/config@1.5.0
+  - @pandacss/logger@1.5.0
+  - @pandacss/astro-plugin-studio@1.5.0
+  - @pandacss/shared@1.5.0
+
+## 1.4.3
+
+### Patch Changes
+
+- Updated dependencies [84a0de9]
+  - @pandacss/config@1.4.3
+  - @pandacss/astro-plugin-studio@1.4.3
+  - @pandacss/logger@1.4.3
+  - @pandacss/shared@1.4.3
+  - @pandacss/token-dictionary@1.4.3
+  - @pandacss/types@1.4.3
+
+## 1.4.2
+
+### Patch Changes
+
+- Updated dependencies [0679f6f]
+- Updated dependencies [1290a27]
+- Updated dependencies [70420dd]
+  - @pandacss/config@1.4.2
+  - @pandacss/shared@1.4.2
+  - @pandacss/token-dictionary@1.4.2
+  - @pandacss/types@1.4.2
+  - @pandacss/astro-plugin-studio@1.4.2
+  - @pandacss/logger@1.4.2
+
+## 1.4.1
+
+### Patch Changes
+
+- @pandacss/astro-plugin-studio@1.4.1
+- @pandacss/config@1.4.1
+- @pandacss/logger@1.4.1
+- @pandacss/shared@1.4.1
+- @pandacss/token-dictionary@1.4.1
+- @pandacss/types@1.4.1
+
+## 1.4.0
+
+### Patch Changes
+
+- @pandacss/astro-plugin-studio@1.4.0
+- @pandacss/config@1.4.0
+- @pandacss/logger@1.4.0
+- @pandacss/shared@1.4.0
+- @pandacss/token-dictionary@1.4.0
+- @pandacss/types@1.4.0
+
+## 1.3.1
+
+### Patch Changes
+
+- @pandacss/astro-plugin-studio@1.3.1
+- @pandacss/config@1.3.1
+- @pandacss/logger@1.3.1
+- @pandacss/shared@1.3.1
+- @pandacss/token-dictionary@1.3.1
+- @pandacss/types@1.3.1
+
+## 1.3.0
+
+### Patch Changes
+
+- Updated dependencies [70efd73]
+  - @pandacss/types@1.3.0
+  - @pandacss/config@1.3.0
+  - @pandacss/logger@1.3.0
+  - @pandacss/token-dictionary@1.3.0
+  - @pandacss/astro-plugin-studio@1.3.0
+  - @pandacss/shared@1.3.0
+
+## 1.2.0
+
+### Patch Changes
+
+- @pandacss/config@1.2.0
+- @pandacss/astro-plugin-studio@1.2.0
+- @pandacss/logger@1.2.0
+- @pandacss/shared@1.2.0
+- @pandacss/token-dictionary@1.2.0
+- @pandacss/types@1.2.0
+
+## 1.1.0
+
+### Patch Changes
+
+- Updated dependencies [47a0011]
+- Updated dependencies [e8ec0aa]
+  - @pandacss/types@1.1.0
+  - @pandacss/config@1.1.0
+  - @pandacss/shared@1.1.0
+  - @pandacss/logger@1.1.0
+  - @pandacss/token-dictionary@1.1.0
+  - @pandacss/astro-plugin-studio@1.1.0
+
+## 1.0.1
+
+### Patch Changes
+
+- @pandacss/config@1.0.1
+- @pandacss/astro-plugin-studio@1.0.1
+- @pandacss/logger@1.0.1
+- @pandacss/shared@1.0.1
+- @pandacss/token-dictionary@1.0.1
+- @pandacss/types@1.0.1
+
+## 1.0.0
+
+### Major Changes
+
+- a3bcbea: Stable release of PandaCSS
+
+  ### Style Context
+
+  Add `createStyleContext` function to framework artifacts for React, Preact, Solid, and Vue frameworks
+
+  ```tsx
+  import { sva } from 'styled-system/css'
+  import { createStyleContext } from 'styled-system/jsx'
+
+  const card = sva({
+    slots: ['root', 'label'],
+    base: {
+      root: {
+        color: 'red',
+        bg: 'red.300',
+      },
+      label: {
+        fontWeight: 'medium',
+      },
+    },
+    variants: {
+      size: {
+        sm: {
+          root: {
+            padding: '10px',
+          },
+        },
+        md: {
+          root: {
+            padding: '20px',
+          },
+        },
+      },
+    },
+    defaultVariants: {
+      size: 'sm',
+    },
+  })
+
+  const { withProvider, withContext } = createStyleContext(card)
+
+  const CardRoot = withProvider('div', 'root')
+  const CardLabel = withContext('label', 'label')
+  ```
+
+  Then, use like this:
+
+  ```tsx
+  <CardRoot size="sm">
+    <CardLabel>Hello</CardLabel>
+  </CardRoot>
+  ```
+
+### Patch Changes
+
+- Updated dependencies [a3bcbea]
+  - @pandacss/astro-plugin-studio@1.0.0
+  - @pandacss/config@1.0.0
+  - @pandacss/logger@1.0.0
+  - @pandacss/shared@1.0.0
+  - @pandacss/token-dictionary@1.0.0
+  - @pandacss/types@1.0.0
+
 ## 0.54.0
 
 ### Patch Changes

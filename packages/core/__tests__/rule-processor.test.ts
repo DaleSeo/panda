@@ -376,7 +376,7 @@ describe('rule processor', () => {
           color: cyan;
       }
 
-        .target .\\[\\&\\[data-attr\\=\\'test\\'\\]\\]\\:expanded\\:\\[\\.target_\\&\\]\\:open\\:c_orange[data-attr='test']:is([aria-expanded=true], [data-expanded], [data-state="expanded"]):is([open], [data-open], [data-state="open"]) {
+        .target .\\[\\&\\[data-attr\\=\\'test\\'\\]\\]\\:expanded\\:\\[\\.target_\\&\\]\\:open\\:c_orange[data-attr='test']:is([aria-expanded=true], [data-expanded], [data-state="expanded"]):is([open], [data-open], [data-state="open"], :popover-open) {
           color: orange;
       }
 
@@ -1117,9 +1117,9 @@ describe('rule processor', () => {
       }
 
         .bg-grad_to-b {
-          --gradient-stops: var(--gradient-via-stops, var(--gradient-from) var(--gradient-from-position), var(--gradient-to) var(--gradient-to-position));
-          --gradient: var(--gradient-via-stops, var(--gradient-stops));
-          background-image: linear-gradient(to bottom, var(--gradient));
+          --gradient-stops: var(--gradient-via-stops, var(--gradient-position), var(--gradient-from) var(--gradient-from-position), var(--gradient-to) var(--gradient-to-position));
+          --gradient-position: to bottom;
+          background-image: linear-gradient(var(--gradient-stops));
       }
 
         .grad-from_rgb\\(200_200_200_\\/_\\.4\\) {

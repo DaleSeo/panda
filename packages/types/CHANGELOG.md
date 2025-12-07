@@ -1,5 +1,154 @@
 # @pandacss/types
 
+## 1.6.1
+
+## 1.6.0
+
+## 1.5.1
+
+## 1.5.0
+
+### Minor Changes
+
+- 91c65ff: Add support for controlling the color palette generation via `theme.colorPalette` property.
+
+  ```ts
+  // Disable color palette generation completely
+  export default defineConfig({
+    theme: {
+      colorPalette: {
+        enabled: false,
+      },
+    },
+  })
+
+  // Include only specific colors
+  export default defineConfig({
+    theme: {
+      colorPalette: {
+        include: ['gray', 'blue', 'red'],
+      },
+    },
+  })
+
+  // Exclude specific colors
+  export default defineConfig({
+    theme: {
+      colorPalette: {
+        exclude: ['yellow', 'orange'],
+      },
+    },
+  })
+  ```
+
+## 1.4.3
+
+## 1.4.2
+
+## 1.4.1
+
+## 1.4.0
+
+## 1.3.1
+
+## 1.3.0
+
+### Patch Changes
+
+- 70efd73: Enhanced composition types with comprehensive CSS property support
+
+  **Text Style Properties:** Added these properties to `theme.textStyles`:
+
+  - Added `color` property
+  - Text layout properties (`direction`, `textAlign`, `writingMode`)
+  - Advanced text properties (`tabSize`, `hangingPunctuation`, `textDecorationSkip*`, `textStroke*`)
+
+  **Layer Style Properties:** Added these properties to `theme.layerStyles`:
+
+  - Layout properties (`position`, `zIndex`, `display`, `height`, `width`, `margin*`, `inset*`)
+  - Visual effects (`clipPath`, `mixBlendMode`, `mask*`)
+  - Modern properties (`aspectRatio`, `objectFit`, `cursor`, `content`, `transition`)
+  - Background shorthands (`bg`, `bgColor`, `bgImage`)
+  - Styling (`borderImage*`, `outline*`, `color`)
+
+## 1.2.0
+
+## 1.1.0
+
+### Minor Changes
+
+- 47a0011: Add missing WebKit CSS properties to resolve TypeScript errors. Adds support for:
+
+  - `WebkitUserDrag` / `-webkit-user-drag` - Controls element drag behavior
+  - `WebkitAppRegion` / `-webkit-app-region` - For Electron window controls
+  - `WebkitBorderHorizontalSpacing` / `-webkit-border-horizontal-spacing` - Table border spacing
+  - `WebkitBorderVerticalSpacing` / `-webkit-border-vertical-spacing` - Table border spacing
+  - `WebkitTextSecurity` / `-webkit-text-security` - Text obscuring for passwords
+
+  Fixes TypeScript errors when using these vendor-prefixed properties in Panda CSS.
+
+- e8ec0aa: Add support for `preset:resolved` hook to pick/omit specific preset properties.
+
+## 1.0.1
+
+## 1.0.0
+
+### Major Changes
+
+- a3bcbea: Stable release of PandaCSS
+
+  ### Style Context
+
+  Add `createStyleContext` function to framework artifacts for React, Preact, Solid, and Vue frameworks
+
+  ```tsx
+  import { sva } from 'styled-system/css'
+  import { createStyleContext } from 'styled-system/jsx'
+
+  const card = sva({
+    slots: ['root', 'label'],
+    base: {
+      root: {
+        color: 'red',
+        bg: 'red.300',
+      },
+      label: {
+        fontWeight: 'medium',
+      },
+    },
+    variants: {
+      size: {
+        sm: {
+          root: {
+            padding: '10px',
+          },
+        },
+        md: {
+          root: {
+            padding: '20px',
+          },
+        },
+      },
+    },
+    defaultVariants: {
+      size: 'sm',
+    },
+  })
+
+  const { withProvider, withContext } = createStyleContext(card)
+
+  const CardRoot = withProvider('div', 'root')
+  const CardLabel = withContext('label', 'label')
+  ```
+
+  Then, use like this:
+
+  ```tsx
+  <CardRoot size="sm">
+    <CardLabel>Hello</CardLabel>
+  </CardRoot>
+  ```
+
 ## 0.54.0
 
 ## 0.53.7

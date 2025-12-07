@@ -1,5 +1,170 @@
 # @pandacss/astro-plugin-studio
 
+## 1.6.1
+
+### Patch Changes
+
+- Updated dependencies [8f43369]
+  - @pandacss/core@1.6.1
+  - @pandacss/node@1.6.1
+
+## 1.6.0
+
+### Patch Changes
+
+- Updated dependencies [8aa3c64]
+  - @pandacss/node@1.6.0
+  - @pandacss/core@1.6.0
+
+## 1.5.1
+
+### Patch Changes
+
+- @pandacss/node@1.5.1
+- @pandacss/core@1.5.1
+
+## 1.5.0
+
+### Patch Changes
+
+- Updated dependencies [91c65ff]
+  - @pandacss/core@1.5.0
+  - @pandacss/node@1.5.0
+
+## 1.4.3
+
+### Patch Changes
+
+- Updated dependencies [bb32028]
+- Updated dependencies [84a0de9]
+  - @pandacss/core@1.4.3
+  - @pandacss/node@1.4.3
+
+## 1.4.2
+
+### Patch Changes
+
+- Updated dependencies [70420dd]
+  - @pandacss/core@1.4.2
+  - @pandacss/node@1.4.2
+
+## 1.4.1
+
+### Patch Changes
+
+- Updated dependencies [db237b6]
+  - @pandacss/core@1.4.1
+  - @pandacss/node@1.4.1
+
+## 1.4.0
+
+### Patch Changes
+
+- Updated dependencies [4c291ca]
+  - @pandacss/core@1.4.0
+  - @pandacss/node@1.4.0
+
+## 1.3.1
+
+### Patch Changes
+
+- Updated dependencies [7fcd100]
+  - @pandacss/core@1.3.1
+  - @pandacss/node@1.3.1
+
+## 1.3.0
+
+### Patch Changes
+
+- @pandacss/node@1.3.0
+- @pandacss/core@1.3.0
+
+## 1.2.0
+
+### Patch Changes
+
+- @pandacss/node@1.2.0
+- @pandacss/core@1.2.0
+
+## 1.1.0
+
+### Patch Changes
+
+- @pandacss/core@1.1.0
+- @pandacss/node@1.1.0
+
+## 1.0.1
+
+### Patch Changes
+
+- @pandacss/node@1.0.1
+- @pandacss/core@1.0.1
+
+## 1.0.0
+
+### Major Changes
+
+- a3bcbea: Stable release of PandaCSS
+
+  ### Style Context
+
+  Add `createStyleContext` function to framework artifacts for React, Preact, Solid, and Vue frameworks
+
+  ```tsx
+  import { sva } from 'styled-system/css'
+  import { createStyleContext } from 'styled-system/jsx'
+
+  const card = sva({
+    slots: ['root', 'label'],
+    base: {
+      root: {
+        color: 'red',
+        bg: 'red.300',
+      },
+      label: {
+        fontWeight: 'medium',
+      },
+    },
+    variants: {
+      size: {
+        sm: {
+          root: {
+            padding: '10px',
+          },
+        },
+        md: {
+          root: {
+            padding: '20px',
+          },
+        },
+      },
+    },
+    defaultVariants: {
+      size: 'sm',
+    },
+  })
+
+  const { withProvider, withContext } = createStyleContext(card)
+
+  const CardRoot = withProvider('div', 'root')
+  const CardLabel = withContext('label', 'label')
+  ```
+
+  Then, use like this:
+
+  ```tsx
+  <CardRoot size="sm">
+    <CardLabel>Hello</CardLabel>
+  </CardRoot>
+  ```
+
+### Patch Changes
+
+- Updated dependencies [a3bcbea]
+- Updated dependencies [a20811c]
+  - @pandacss/core@1.0.0
+  - @pandacss/node@1.0.0
+
 ## 0.54.0
 
 ### Patch Changes

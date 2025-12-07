@@ -1,5 +1,254 @@
 # @pandacss/preset-base
 
+## 1.6.1
+
+### Patch Changes
+
+- @pandacss/types@1.6.1
+
+## 1.6.0
+
+### Patch Changes
+
+- @pandacss/types@1.6.0
+
+## 1.5.1
+
+### Patch Changes
+
+- @pandacss/types@1.5.1
+
+## 1.5.0
+
+### Patch Changes
+
+- Updated dependencies [91c65ff]
+  - @pandacss/types@1.5.0
+
+## 1.4.3
+
+### Patch Changes
+
+- @pandacss/types@1.4.3
+
+## 1.4.2
+
+### Patch Changes
+
+- @pandacss/types@1.4.2
+
+## 1.4.1
+
+### Patch Changes
+
+- @pandacss/types@1.4.1
+
+## 1.4.0
+
+### Minor Changes
+
+- 29cf719: - **Preset Base**: Change default spacing from `10px` and `8px`
+  - **Preset Panda**: Add `5.5` to spacing scale to cover more minor scales
+
+### Patch Changes
+
+- 1bca361: Fix regression in `_marker` condition due to the use of `:is()` which doesn't work for pseudo elements.
+  - @pandacss/types@1.4.0
+
+## 1.3.1
+
+### Patch Changes
+
+- @pandacss/types@1.3.1
+
+## 1.3.0
+
+### Minor Changes
+
+- 1c36121: Added new transition values and enhanced transition property utilities
+
+  - `size` → `width, height, min-width, max-width, min-height, max-height`
+  - `position` → `left, right, top, bottom, inset, inset-inline, inset-block`
+  - `background` → `background, background-color, background-image, background-position`
+
+  ```tsx
+  import { css } from 'styled-system/css'
+
+  // Transition shorthand values
+  css({ transition: 'size' })
+
+  // Property groups
+  css({ transitionProperty: 'size', transitionDuration: '300ms' })
+  ```
+
+### Patch Changes
+
+- Updated dependencies [70efd73]
+  - @pandacss/types@1.3.0
+
+## 1.2.0
+
+### Minor Changes
+
+- 9964772: Add new utilities for managing focus rings with `focusRing` and `focusVisibleRing` properties
+
+  - `focusRing`: Style focus states using `&:is(:focus, [data-focus])` selector with `outside`, `inside`, `mixed`, or
+    `none` values
+  - `focusVisibleRing`: Style keyboard-only focus using `&:is(:focus-visible, [data-focus-visible])` selector
+  - `focusRingColor`, `focusRingWidth`, `focusRingStyle`, and `focusRingOffset` for fine-tuned control
+  - Configure the global focus ring color with `--global-color-focus-ring` in global CSS
+
+  ```tsx
+  <div
+    className={css({
+      focusRing: 'outside',
+      focusVisibleRing: 'inside',
+      focusRingColor: 'blue.300',
+    })}
+  >
+    Click me
+  </div>
+  ```
+
+### Patch Changes
+
+- @pandacss/types@1.2.0
+
+## 1.1.0
+
+### Patch Changes
+
+- Updated dependencies [47a0011]
+- Updated dependencies [e8ec0aa]
+  - @pandacss/types@1.1.0
+
+## 1.0.1
+
+### Patch Changes
+
+- 0019184: Fix issue where `bgGradient` did not respect the gradient token.
+  - @pandacss/types@1.0.1
+
+## 1.0.0
+
+### Major Changes
+
+- a20811c: - Fix issue where `rtl` and `ltr` variants does not work with `[dir=auto]`
+  - Add `::-webkit-details-marker` to `marker` condition
+  - Add new `inset-2xs`, `inset-xs` and `inset-sm` shadows
+  - Add new `noscript` and `inverted-colors` conditions
+  - Add `:popover-open` to `open` condition
+  - Removed `inner` shadow in favor of `inset-sm`
+  - Remap blur tokens:
+    - `blurs.sm` -> `blurs.xs`
+    - `blurs.base` -> `blurs.sm`
+- a3bcbea: Stable release of PandaCSS
+
+  ### Style Context
+
+  Add `createStyleContext` function to framework artifacts for React, Preact, Solid, and Vue frameworks
+
+  ```tsx
+  import { sva } from 'styled-system/css'
+  import { createStyleContext } from 'styled-system/jsx'
+
+  const card = sva({
+    slots: ['root', 'label'],
+    base: {
+      root: {
+        color: 'red',
+        bg: 'red.300',
+      },
+      label: {
+        fontWeight: 'medium',
+      },
+    },
+    variants: {
+      size: {
+        sm: {
+          root: {
+            padding: '10px',
+          },
+        },
+        md: {
+          root: {
+            padding: '20px',
+          },
+        },
+      },
+    },
+    defaultVariants: {
+      size: 'sm',
+    },
+  })
+
+  const { withProvider, withContext } = createStyleContext(card)
+
+  const CardRoot = withProvider('div', 'root')
+  const CardLabel = withContext('label', 'label')
+  ```
+
+  Then, use like this:
+
+  ```tsx
+  <CardRoot size="sm">
+    <CardLabel>Hello</CardLabel>
+  </CardRoot>
+  ```
+
+### Minor Changes
+
+- 860cc7d: Add support for `bgLinear`, `bgRadial` and `bgConic` properties.
+
+  ### `bgLinear`
+
+  ```tsx
+  <div
+    className={css({
+      bgLinear: 'to-r',
+      gradientFrom: 'cyan.500',
+      gradientTo: 'blue.500',
+    })}
+  />
+  ```
+
+  ### `bgRadial`
+
+  ```tsx
+  <div
+    className={css({
+      bgRadial: 'in srgb',
+      gradientFrom: 'pink.400',
+      gradientFromPosition: '40%',
+      gradientTo: 'fuchsia.700',
+    })}
+  />
+  ```
+
+  ### `bgConic`
+
+  ```tsx
+  <div
+    className={css({
+      bgConic: 'in srgb',
+      gradientFrom: 'blue.600',
+      gradientTo: 'sky.400',
+      gradientToPosition: '50%',
+    })}
+  />
+  ```
+
+  Add support for `boxSize` property that maps to `width` and `height` properties.
+
+  ```tsx
+  <div className={css({ boxSize: '24' })} />
+  ```
+
+### Patch Changes
+
+- Updated dependencies [a3bcbea]
+  - @pandacss/types@1.0.0
+
 ## 0.54.0
 
 ### Minor Changes

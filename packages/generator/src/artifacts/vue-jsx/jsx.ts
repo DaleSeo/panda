@@ -19,7 +19,10 @@ export function generateVueJsxFactory(ctx: Context) {
       const cvaFn = configOrCva.__cva__ || configOrCva.__recipe__ ? configOrCva : cva(configOrCva)
 
       const forwardFn = options.shouldForwardProp || defaultShouldForwardProp
-      const shouldForwardProp = (prop) => forwardFn(prop, cvaFn.variantKeys)
+      const shouldForwardProp = (prop) => {
+        if (options.forwardProps?.includes(prop)) return true
+        return forwardFn(prop, cvaFn.variantKeys)
+      }
 
       const defaultProps = Object.assign(
         options.dataAttr && configOrCva.__name__ ? { 'data-recipe': configOrCva.__name__ } : {},
@@ -37,6 +40,7 @@ export function generateVueJsxFactory(ctx: Context) {
         inheritAttrs: false,
         props: {
           modelValue: null,
+          unstyled: { type: Boolean, default: false },
           as: { type: [String, Object], default: __base__ }
         },
         setup(props, { slots, attrs, emit }) {
@@ -60,7 +64,14 @@ export function generateVueJsxFactory(ctx: Context) {
             return cx(css(cvaStyles, propStyles, cssStyles), combinedProps.value.className, combinedProps.value.class)
           })
 
-          const classes = configOrCva.__recipe__ ? recipeClass : cvaClass
+          const classes = computed(() => {
+            if (props.unstyled) {
+              const [_htmlProps, _forwardedProps, _variantProps, styleProps, _elementProps] = splittedProps.value
+              const { css: cssStyles, ...propStyles } = styleProps
+              return cx(css(propStyles, cssStyles), combinedProps.value.className, combinedProps.value.class)
+            }
+            return configOrCva.__recipe__ ? recipeClass.value : cvaClass.value
+          })
 
           const vModelProps = computed(() => {
             const result = {};

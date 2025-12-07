@@ -22,14 +22,20 @@ export function generateSolidJsxFactory(ctx: Context) {
           : cva(configOrCva)
 
       const forwardFn = options.shouldForwardProp || defaultShouldForwardProp
-      const shouldForwardProp = (prop) => forwardFn(prop, cvaFn.variantKeys)
+      const shouldForwardProp = (prop) => {
+        if (options.forwardProps?.includes(prop)) return true
+        return forwardFn(prop, cvaFn.variantKeys)
+      }
 
-      const defaultProps = Object.assign(
-        options.dataAttr && configOrCva.__name__
+      const getDefaultProps = () => {
+        const baseDefaults = options.dataAttr && configOrCva.__name__
           ? { 'data-recipe': configOrCva.__name__ }
-          : {},
-        options.defaultProps
-      )
+          : {}
+        const defaults = typeof options.defaultProps === 'function'
+          ? options.defaultProps()
+          : options.defaultProps
+        return Object.assign(baseDefaults, defaults)
+      }
 
       const __cvaFn__ = composeCvaFn(element.__cva__, cvaFn)
       const __shouldForwardProps__ = composeShouldForwardProps(
@@ -40,12 +46,13 @@ export function generateSolidJsxFactory(ctx: Context) {
       const ${componentName} = (props) => {
         const mergedProps = mergeProps(
           { as: element.__base__ || element },
-          defaultProps,
+          getDefaultProps(),
           props
         )
 
         const [localProps, restProps] = splitProps(mergedProps, [
           'as',
+          'unstyled',
           'class',
           'className',
         ])
@@ -88,7 +95,13 @@ export function generateSolidJsxFactory(ctx: Context) {
           )
         }
 
-        const classes = configOrCva.__recipe__ ? recipeClass : cvaClass
+        const classes = () => {
+          if (localProps.unstyled) {
+            const { css: cssStyles, ...propStyles } = styleProps
+            return cx(css(propStyles, cssStyles), localProps.class, localProps.className)
+          }
+          return configOrCva.__recipe__ ? recipeClass() : cvaClass()
+        }
 
         if (forwardedProps.className) {
           delete forwardedProps.className

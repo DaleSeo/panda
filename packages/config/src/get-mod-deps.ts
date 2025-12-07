@@ -1,10 +1,10 @@
+import type { ConfigTsOptions } from '@pandacss/types'
 import fs from 'fs'
 import path from 'path'
-import { type PathMapping } from './ts-config-paths'
-import { resolveTsPathPattern } from './resolve-ts-path-pattern'
-import ts from 'typescript'
-import type { ConfigTsOptions } from '@pandacss/types'
 import type { TSConfig } from 'pkg-types'
+import ts from 'typescript'
+import { resolveTsPathPattern } from './resolve-ts-path-pattern'
+import { type PathMapping } from './ts-config-paths'
 
 const jsExtensions = ['.js', '.cjs', '.mjs']
 
@@ -109,7 +109,7 @@ function getDeps(opts: GetDepsOptions, fromAlias?: string) {
       if (!filename) return
 
       getDeps(Object.assign({}, nextOpts, { filename }), mod)
-    } catch (err) {
+    } catch {
       //
     }
   })

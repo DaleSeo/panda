@@ -152,13 +152,16 @@ describe('generator', () => {
           --font-sizes-7xl: 4.5rem;
           --font-sizes-8xl: 6rem;
           --font-sizes-9xl: 8rem;
+          --shadows-2xs: 0 1px rgb(0 0 0 / 0.05);
           --shadows-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
           --shadows-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
           --shadows-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
           --shadows-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
           --shadows-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
           --shadows-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-          --shadows-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+          --shadows-inset-2xs: inset 0 1px rgb(0 0 0 / 0.05);
+          --shadows-inset-xs: inset 0 1px 1px rgb(0 0 0 / 0.05);
+          --shadows-inset-sm: inset 0 2px 4px rgb(0 0 0 / 0.05);
           --colors-current: currentColor;
           --colors-black: #000;
           --colors-white: #fff;
@@ -408,8 +411,8 @@ describe('generator', () => {
           --colors-deep-test-yam: %555;
           --colors-deep-test-pool-poller: #fff;
           --colors-deep-test-pool-tall: $dfdf;
-          --blurs-sm: 4px;
-          --blurs-base: 8px;
+          --blurs-xs: 4px;
+          --blurs-sm: 8px;
           --blurs-md: 12px;
           --blurs-lg: 16px;
           --blurs-xl: 24px;
@@ -449,6 +452,8 @@ describe('generator', () => {
           --spacing-1\\.5: 0.375rem;
           --spacing-2\\.5: 0.625rem;
           --spacing-3\\.5: 0.875rem;
+          --spacing-4\\.5: 1.125rem;
+          --spacing-5\\.5: 1.375rem;
           --sizes-0: 0rem;
           --sizes-1: 0.25rem;
           --sizes-2: 0.5rem;
@@ -483,6 +488,8 @@ describe('generator', () => {
           --sizes-1\\.5: 0.375rem;
           --sizes-2\\.5: 0.625rem;
           --sizes-3\\.5: 0.875rem;
+          --sizes-4\\.5: 1.125rem;
+          --sizes-5\\.5: 1.375rem;
           --sizes-xs: 20rem;
           --sizes-sm: 24rem;
           --sizes-md: 28rem;

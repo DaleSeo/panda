@@ -16,7 +16,7 @@ export const useConfig = (configStr: string) => {
   const [_isLoading, setIsLoading] = useState(true)
   const isLoading = useDebounce(_isLoading, 500)
 
-  const compileWorkerRef = useRef<Worker>()
+  const compileWorkerRef = useRef<Worker | undefined>(undefined)
 
   useEffect(() => {
     compileWorkerRef.current = new Worker(new URL('../lib/config/compile.worker.ts', import.meta.url))
@@ -38,7 +38,6 @@ export const useConfig = (configStr: string) => {
     return () => {
       compileWorkerRef.current?.terminate()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useUpdateEffect(() => {

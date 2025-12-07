@@ -438,9 +438,9 @@ describe('style decoder', () => {
               "value": "&:is([aria-expanded=true], [data-expanded], [data-state="expanded"])",
             },
             {
-              "raw": "&:is([open], [data-open], [data-state="open"])",
+              "raw": "&:is([open], [data-open], [data-state="open"], :popover-open)",
               "type": "self-nesting",
-              "value": "&:is([open], [data-open], [data-state="open"])",
+              "value": "&:is([open], [data-open], [data-state="open"], :popover-open)",
             },
             {
               "raw": ".target &",
@@ -459,7 +459,7 @@ describe('style decoder', () => {
             ".\\[\\&\\[data-attr\\=\\'test\\'\\]\\]\\:expanded\\:\\[\\.target_\\&\\]\\:open\\:c_orange": {
               "&[data-attr='test']": {
                 "&:is([aria-expanded=true], [data-expanded], [data-state="expanded"])": {
-                  "&:is([open], [data-open], [data-state="open"])": {
+                  "&:is([open], [data-open], [data-state="open"], :popover-open)": {
                     ".target &": {
                       "color": "orange",
                     },
@@ -2282,9 +2282,9 @@ describe('style decoder', () => {
             "layer": undefined,
             "result": {
               ".bg-grad_to-b": {
-                "--gradient": "var(--gradient-via-stops, var(--gradient-stops))",
-                "--gradient-stops": "var(--gradient-via-stops, var(--gradient-from) var(--gradient-from-position), var(--gradient-to) var(--gradient-to-position))",
-                "backgroundImage": "linear-gradient(to bottom, var(--gradient))",
+                "--gradient-position": "to bottom",
+                "--gradient-stops": "var(--gradient-via-stops, var(--gradient-position), var(--gradient-from) var(--gradient-from-position), var(--gradient-to) var(--gradient-to-position))",
+                "backgroundImage": "linear-gradient(var(--gradient-stops))",
               },
             },
           },

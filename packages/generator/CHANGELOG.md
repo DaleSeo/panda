@@ -1,5 +1,380 @@
 # @pandacss/generator
 
+## 1.6.1
+
+### Patch Changes
+
+- Updated dependencies [8f43369]
+  - @pandacss/core@1.6.1
+  - @pandacss/is-valid-prop@1.6.1
+  - @pandacss/logger@1.6.1
+  - @pandacss/shared@1.6.1
+  - @pandacss/token-dictionary@1.6.1
+  - @pandacss/types@1.6.1
+
+## 1.6.0
+
+### Minor Changes
+
+- 8aa3c64: Add `--splitting` flag to `cssgen` command for per-layer CSS output.
+
+  When enabled, CSS is emitted as separate files instead of a single `styles.css`:
+
+  ```
+  styled-system/
+  ├── styles.css              # @layer declaration + @imports
+  └── styles/
+      ├── reset.css           # Preflight/reset CSS
+      ├── global.css          # Global CSS
+      ├── tokens.css          # Design tokens
+      ├── utilities.css       # Utility classes
+      ├── recipes/
+      │   ├── index.css       # @imports all recipe files
+      │   └── {recipe}.css    # Individual recipe styles
+      └── themes/
+          └── {theme}.css     # Theme tokens (not auto-imported)
+  ```
+
+  Usage:
+
+  ```bash
+  panda cssgen --splitting
+  ```
+
+### Patch Changes
+
+- @pandacss/core@1.6.0
+- @pandacss/is-valid-prop@1.6.0
+- @pandacss/logger@1.6.0
+- @pandacss/shared@1.6.0
+- @pandacss/token-dictionary@1.6.0
+- @pandacss/types@1.6.0
+
+## 1.5.1
+
+### Patch Changes
+
+- bd2f8c9: fix(solid): allow defaultProps to be an Accessor
+- 827566b: - **Style Context**:
+  - Improve `createStyleContext` error messages to include component name, slot, and recipe name when Provider is
+    missing.
+  - Fix TypeScript types for `withProvider` and `withContext` to include the `as` prop, matching the behavior of the
+    `styled` factory.
+  - @pandacss/core@1.5.1
+  - @pandacss/is-valid-prop@1.5.1
+  - @pandacss/logger@1.5.1
+  - @pandacss/shared@1.5.1
+  - @pandacss/token-dictionary@1.5.1
+  - @pandacss/types@1.5.1
+
+## 1.5.0
+
+### Minor Changes
+
+- 91c65ff: Add support for controlling the color palette generation via `theme.colorPalette` property.
+
+  ```ts
+  // Disable color palette generation completely
+  export default defineConfig({
+    theme: {
+      colorPalette: {
+        enabled: false,
+      },
+    },
+  })
+
+  // Include only specific colors
+  export default defineConfig({
+    theme: {
+      colorPalette: {
+        include: ['gray', 'blue', 'red'],
+      },
+    },
+  })
+
+  // Exclude specific colors
+  export default defineConfig({
+    theme: {
+      colorPalette: {
+        exclude: ['yellow', 'orange'],
+      },
+    },
+  })
+  ```
+
+### Patch Changes
+
+- 52e2399: Fix TypeScript error when using `data-*` attributes in `defaultProps` for `createStyleContext` and JSX
+  factory functions.
+
+  ```tsx
+  const TabsList = withContext(TabsPrimitive.List, 'list', {
+    defaultProps: {
+      'data-slot': 'tabs-list', // now works without type errors
+    },
+  })
+  ```
+
+- Updated dependencies [91c65ff]
+  - @pandacss/types@1.5.0
+  - @pandacss/token-dictionary@1.5.0
+  - @pandacss/core@1.5.0
+  - @pandacss/logger@1.5.0
+  - @pandacss/is-valid-prop@1.5.0
+  - @pandacss/shared@1.5.0
+
+## 1.4.3
+
+### Patch Changes
+
+- bb32028: Fix "Browserslist: caniuse-lite is outdated" warning by updating `browserslist` and PostCSS-related packages:
+
+  - Update `browserslist` from 4.23.3 to 4.24.4
+  - Update `postcss` from 8.4.49 to 8.5.6
+  - Update `postcss-nested` from 6.0.1 to 7.0.2
+  - Update `postcss-merge-rules` from 7.0.4 to 7.0.6
+  - Update other PostCSS plugins to latest patch versions
+
+  This resolves the outdated `caniuse-lite` warning that appeared when using lightningcss without affecting CSS output
+  or requiring snapshot updates.
+
+- 58f492a: **Style Context (Solid)**
+
+  - Fix issue where `withProvider` does not properly provide context leading to runtime errors when wrapping headless
+    component libraries like Ark UI.
+  - Refactor `withProvider` and `withContext` types to ensure required props are properly extracted from the component
+    props.
+
+- Updated dependencies [bb32028]
+- Updated dependencies [84a0de9]
+  - @pandacss/core@1.4.3
+  - @pandacss/is-valid-prop@1.4.3
+  - @pandacss/logger@1.4.3
+  - @pandacss/shared@1.4.3
+  - @pandacss/token-dictionary@1.4.3
+  - @pandacss/types@1.4.3
+
+## 1.4.2
+
+### Patch Changes
+
+- 0679f6f: Fix issue where `create-recipe.mjs` helper was not generated when adding the first recipe to a project that
+  previously had no recipes.
+- 1290a27: Only log errors that are instances of `PandaError`, preventing test framework and other non-Panda errors from
+  being logged during development.
+- Updated dependencies [1290a27]
+- Updated dependencies [70420dd]
+  - @pandacss/shared@1.4.2
+  - @pandacss/token-dictionary@1.4.2
+  - @pandacss/core@1.4.2
+  - @pandacss/types@1.4.2
+  - @pandacss/is-valid-prop@1.4.2
+  - @pandacss/logger@1.4.2
+
+## 1.4.1
+
+### Patch Changes
+
+- Updated dependencies [db237b6]
+  - @pandacss/core@1.4.1
+  - @pandacss/is-valid-prop@1.4.1
+  - @pandacss/logger@1.4.1
+  - @pandacss/shared@1.4.1
+  - @pandacss/token-dictionary@1.4.1
+  - @pandacss/types@1.4.1
+
+## 1.4.0
+
+### Patch Changes
+
+- ce12373: Refactor the type signature of `defineStyles` to return the object passed to it. This improves its
+  composition with `defineRecipe` and `defineSlotRecipe`
+- Updated dependencies [4c291ca]
+  - @pandacss/core@1.4.0
+  - @pandacss/is-valid-prop@1.4.0
+  - @pandacss/logger@1.4.0
+  - @pandacss/shared@1.4.0
+  - @pandacss/token-dictionary@1.4.0
+  - @pandacss/types@1.4.0
+
+## 1.3.1
+
+### Patch Changes
+
+- e0fca65: Fixes issue where `defaultProps` was not supported in `withRootProvider` across all framework implementations
+  (React, Preact, Vue, Solid)
+
+  ```tsx
+  const RootProvider = withRootProvider(Component, {
+    defaultProps: {
+      className: 'root-provider',
+      // other default props
+    },
+  })
+  ```
+
+- ff9afbc: - **Style Context**: Fix type issue where `withRootProvider` from style context incorrectly allowed JSX style
+  props to be passed through to the root component.
+
+  - **React**: Fix issue where combining wrapping a style context component with `styled` caused `ref` to be incorrectly
+    typed
+
+- 5bfaef3: Correct exposed type from the generator that was causing errors in the generated .d.ts files.
+- Updated dependencies [7fcd100]
+  - @pandacss/core@1.3.1
+  - @pandacss/is-valid-prop@1.3.1
+  - @pandacss/logger@1.3.1
+  - @pandacss/shared@1.3.1
+  - @pandacss/token-dictionary@1.3.1
+  - @pandacss/types@1.3.1
+
+## 1.3.0
+
+### Patch Changes
+
+- 7eaeb3c: Added `as` prop to JSX types for polymorphic component support to enable basic polymorphic components.
+
+  **Note:** The `as` prop does not infer types of the target element.
+
+- 2e683fa: Fix issue where specifying `defaultProps.children` in the `styled` or `createStyleContext` factories makes it
+  impossible to override children.
+
+  The fix ensures that explicitly passed children take precedence over default children in React, Preact, and Qwik JSX
+  factories.
+
+- 43be051: Fix TypeScript types for `defaultProps` in `withProvider` and `withContext` to be partial
+- Updated dependencies [70efd73]
+  - @pandacss/types@1.3.0
+  - @pandacss/core@1.3.0
+  - @pandacss/logger@1.3.0
+  - @pandacss/token-dictionary@1.3.0
+  - @pandacss/is-valid-prop@1.3.0
+  - @pandacss/shared@1.3.0
+
+## 1.2.0
+
+### Patch Changes
+
+- a1f5c64: - Add reset styles for `::selection` pseudo element that maps to `var(--global-color-selection, revert)`.
+
+  - Add support for `unstyled` prop in the `styled` factory. This makes it possible to opt out recipe styles as needed.
+
+  ```tsx
+  const Notice = styled('div', {
+    base: {
+      bg: 'red',
+      color: 'white',
+    },
+  })
+
+  // This will remove the recipe styles and only apply the inline styles
+  <Notice unstyled bg="pink" color="green">
+    Hello
+  </Notice>
+  ```
+
+  - @pandacss/core@1.2.0
+  - @pandacss/is-valid-prop@1.2.0
+  - @pandacss/logger@1.2.0
+  - @pandacss/shared@1.2.0
+  - @pandacss/token-dictionary@1.2.0
+  - @pandacss/types@1.2.0
+
+## 1.1.0
+
+### Patch Changes
+
+- Updated dependencies [47a0011]
+- Updated dependencies [e8ec0aa]
+  - @pandacss/types@1.1.0
+  - @pandacss/shared@1.1.0
+  - @pandacss/core@1.1.0
+  - @pandacss/logger@1.1.0
+  - @pandacss/token-dictionary@1.1.0
+  - @pandacss/is-valid-prop@1.1.0
+
+## 1.0.1
+
+### Patch Changes
+
+- d236e21: - **createStyleContext**: Ensure the `defaultProps.className` is applied correctly when no explicit `class`
+  prop is provided
+  - @pandacss/core@1.0.1
+  - @pandacss/is-valid-prop@1.0.1
+  - @pandacss/logger@1.0.1
+  - @pandacss/shared@1.0.1
+  - @pandacss/token-dictionary@1.0.1
+  - @pandacss/types@1.0.1
+
+## 1.0.0
+
+### Major Changes
+
+- a3bcbea: Stable release of PandaCSS
+
+  ### Style Context
+
+  Add `createStyleContext` function to framework artifacts for React, Preact, Solid, and Vue frameworks
+
+  ```tsx
+  import { sva } from 'styled-system/css'
+  import { createStyleContext } from 'styled-system/jsx'
+
+  const card = sva({
+    slots: ['root', 'label'],
+    base: {
+      root: {
+        color: 'red',
+        bg: 'red.300',
+      },
+      label: {
+        fontWeight: 'medium',
+      },
+    },
+    variants: {
+      size: {
+        sm: {
+          root: {
+            padding: '10px',
+          },
+        },
+        md: {
+          root: {
+            padding: '20px',
+          },
+        },
+      },
+    },
+    defaultVariants: {
+      size: 'sm',
+    },
+  })
+
+  const { withProvider, withContext } = createStyleContext(card)
+
+  const CardRoot = withProvider('div', 'root')
+  const CardLabel = withContext('label', 'label')
+  ```
+
+  Then, use like this:
+
+  ```tsx
+  <CardRoot size="sm">
+    <CardLabel>Hello</CardLabel>
+  </CardRoot>
+  ```
+
+### Patch Changes
+
+- Updated dependencies [a3bcbea]
+- Updated dependencies [a20811c]
+  - @pandacss/core@1.0.0
+  - @pandacss/is-valid-prop@1.0.0
+  - @pandacss/logger@1.0.0
+  - @pandacss/shared@1.0.0
+  - @pandacss/token-dictionary@1.0.0
+  - @pandacss/types@1.0.0
+
 ## 0.54.0
 
 ### Patch Changes

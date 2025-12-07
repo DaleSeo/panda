@@ -176,8 +176,8 @@ describe('preset patterns', () => {
 
     expect(result.css).toMatchInlineSnapshot(`
       "@layer utilities {
-        .gap_10px {
-          gap: 10px;
+        .gap_8px {
+          gap: 8px;
       }
 
         .d_flex {
@@ -220,8 +220,8 @@ describe('preset patterns', () => {
 
     expect(result.css).toMatchInlineSnapshot(`
       "@layer utilities {
-        .gap_10px {
-          gap: 10px;
+        .gap_8px {
+          gap: 8px;
       }
 
         .d_flex {
@@ -266,8 +266,8 @@ describe('preset patterns', () => {
 
     expect(result.css).toMatchInlineSnapshot(`
       "@layer utilities {
-        .gap_10px {
-          gap: 10px;
+        .gap_8px {
+          gap: 8px;
       }
 
         .d_flex {
@@ -314,8 +314,8 @@ describe('preset patterns', () => {
 
     expect(result.css).toMatchInlineSnapshot(`
       "@layer utilities {
-        .gap_10px {
-          gap: 10px;
+        .gap_8px {
+          gap: 8px;
       }
 
         .d_flex {
@@ -364,8 +364,8 @@ describe('preset patterns', () => {
 
     expect(result.css).toMatchInlineSnapshot(`
       "@layer utilities {
-        .gap_10px {
-          gap: 10px;
+        .gap_8px {
+          gap: 8px;
       }
 
         .d_flex {
@@ -412,8 +412,8 @@ describe('preset patterns', () => {
 
     expect(result.css).toMatchInlineSnapshot(`
       "@layer utilities {
-        .gap_10px {
-          gap: 10px;
+        .gap_8px {
+          gap: 8px;
       }
 
         .d_flex {
@@ -915,8 +915,8 @@ describe('preset patterns', () => {
 
     expect(result.css).toMatchInlineSnapshot(`
       "@layer utilities {
-        .gap_10px {
-          gap: 10px;
+        .gap_8px {
+          gap: 8px;
       }
 
         .d_grid {
@@ -955,8 +955,8 @@ describe('preset patterns', () => {
 
     expect(result.css).toMatchInlineSnapshot(`
       "@layer utilities {
-        .gap_10px {
-          gap: 10px;
+        .gap_8px {
+          gap: 8px;
       }
 
         .d_grid {
@@ -1061,8 +1061,8 @@ describe('preset patterns', () => {
 
     expect(result.css).toMatchInlineSnapshot(`
       "@layer utilities {
-        .gap_10px {
-          gap: 10px;
+        .gap_8px {
+          gap: 8px;
       }
 
         .d_flex {
@@ -1105,8 +1105,8 @@ describe('preset patterns', () => {
 
     expect(result.css).toMatchInlineSnapshot(`
       "@layer utilities {
-        .gap_10px {
-          gap: 10px;
+        .gap_8px {
+          gap: 8px;
       }
 
         .d_flex {
@@ -1708,8 +1708,8 @@ describe('preset patterns', () => {
 
     expect(result.css).toMatchInlineSnapshot(`
       "@layer utilities {
-        .gap_10px {
-          gap: 10px;
+        .gap_8px {
+          gap: 8px;
       }
 
         .grid-c_span_1 {
@@ -2212,6 +2212,14 @@ describe('staticCss', () => {
           --bleed-x: var(--spacing-3\\.5, \\33\\.5);
       }
 
+        .\\--bleed-x_token\\(spacing\\.4\\.5\\,_4\\.5\\) {
+          --bleed-x: var(--spacing-4\\.5, \\34\\.5);
+      }
+
+        .\\--bleed-x_token\\(spacing\\.5\\.5\\,_5\\.5\\) {
+          --bleed-x: var(--spacing-5\\.5, \\35\\.5);
+      }
+
         .\\--bleed-x_token\\(spacing\\.gutter\\,_gutter\\) {
           --bleed-x: var(--spacing-gutter, gutter);
       }
@@ -2346,6 +2354,14 @@ describe('staticCss', () => {
 
         .\\--bleed-x_token\\(spacing\\.-3\\.5\\,_-3\\.5\\) {
           --bleed-x: calc(var(--spacing-3\\.5) * -1, -\\33\\.5);
+      }
+
+        .\\--bleed-x_token\\(spacing\\.-4\\.5\\,_-4\\.5\\) {
+          --bleed-x: calc(var(--spacing-4\\.5) * -1, -\\34\\.5);
+      }
+
+        .\\--bleed-x_token\\(spacing\\.-5\\.5\\,_-5\\.5\\) {
+          --bleed-x: calc(var(--spacing-5\\.5) * -1, -\\35\\.5);
       }
 
         .\\--bleed-x_token\\(spacing\\.-gutter\\,_-gutter\\) {
@@ -2517,6 +2533,14 @@ describe('staticCss', () => {
 
         .\\--thickness_3\\.5 {
           --thickness: 3.5;
+      }
+
+        .\\--thickness_4\\.5 {
+          --thickness: 4.5;
+      }
+
+        .\\--thickness_5\\.5 {
+          --thickness: 5.5;
       }
 
         .\\--thickness_xs {
@@ -2810,6 +2834,14 @@ describe('staticCss', () => {
           inset-inline-end: var(--spacing-3\\.5);
       }
 
+        .inset-e_4\\.5 {
+          inset-inline-end: var(--spacing-4\\.5);
+      }
+
+        .inset-e_5\\.5 {
+          inset-inline-end: var(--spacing-5\\.5);
+      }
+
         .inset-e_gutter {
           inset-inline-end: var(--spacing-gutter);
       }
@@ -2944,6 +2976,14 @@ describe('staticCss', () => {
 
         .inset-e_-3\\.5 {
           inset-inline-end: calc(var(--spacing-3\\.5) * -1);
+      }
+
+        .inset-e_-4\\.5 {
+          inset-inline-end: calc(var(--spacing-4\\.5) * -1);
+      }
+
+        .inset-e_-5\\.5 {
+          inset-inline-end: calc(var(--spacing-5\\.5) * -1);
       }
 
         .inset-e_-gutter {
@@ -3082,6 +3122,14 @@ describe('staticCss', () => {
           inset-block-start: var(--spacing-3\\.5);
       }
 
+        .inset-bs_4\\.5 {
+          inset-block-start: var(--spacing-4\\.5);
+      }
+
+        .inset-bs_5\\.5 {
+          inset-block-start: var(--spacing-5\\.5);
+      }
+
         .inset-bs_gutter {
           inset-block-start: var(--spacing-gutter);
       }
@@ -3216,6 +3264,14 @@ describe('staticCss', () => {
 
         .inset-bs_-3\\.5 {
           inset-block-start: calc(var(--spacing-3\\.5) * -1);
+      }
+
+        .inset-bs_-4\\.5 {
+          inset-block-start: calc(var(--spacing-4\\.5) * -1);
+      }
+
+        .inset-bs_-5\\.5 {
+          inset-block-start: calc(var(--spacing-5\\.5) * -1);
       }
 
         .inset-bs_-gutter {

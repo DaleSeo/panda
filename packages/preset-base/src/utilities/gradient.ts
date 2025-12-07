@@ -1,56 +1,117 @@
-import type { UtilityConfig } from '@pandacss/types'
+import type { PropertyValues, UtilityConfig } from '@pandacss/types'
 import { createColorMixTransform } from '../color-mix-transform'
 
 const gradientVia = createColorMixTransform('--gradient-via')
 
-const gradientTemplate = {
-  'to-t': 'linear-gradient(to top, var(--gradient))',
-  'to-tr': 'linear-gradient(to top right, var(--gradient))',
-  'to-r': 'linear-gradient(to right, var(--gradient))',
-  'to-br': 'linear-gradient(to bottom right, var(--gradient))',
-  'to-b': 'linear-gradient(to bottom, var(--gradient))',
-  'to-bl': 'linear-gradient(to bottom left, var(--gradient))',
-  'to-l': 'linear-gradient(to left, var(--gradient))',
-  'to-tl': 'linear-gradient(to top left, var(--gradient))',
+const linearGradientDirectionMap = new Map([
+  ['to-t', 'to top'],
+  ['to-tr', 'to top right'],
+  ['to-r', 'to right'],
+  ['to-br', 'to bottom right'],
+  ['to-b', 'to bottom'],
+  ['to-bl', 'to bottom left'],
+  ['to-l', 'to left'],
+  ['to-tl', 'to top left'],
+])
+
+const linearGradientValues: PropertyValues = (theme) => {
+  return {
+    ...theme('gradients'),
+    ...Object.fromEntries(linearGradientDirectionMap.entries()),
+  }
 }
 
-const gradientVars = {
-  '--gradient-stops':
-    'var(--gradient-via-stops, var(--gradient-from) var(--gradient-from-position), var(--gradient-to) var(--gradient-to-position))',
-  '--gradient': 'var(--gradient-via-stops, var(--gradient-stops))',
-}
+const gradientStops =
+  'var(--gradient-via-stops, var(--gradient-position), var(--gradient-from) var(--gradient-from-position), var(--gradient-to) var(--gradient-to-position))'
+
+const gradientViaStops =
+  'var(--gradient-position), var(--gradient-from) var(--gradient-from-position), var(--gradient-via) var(--gradient-via-position), var(--gradient-to) var(--gradient-to-position)'
 
 export const backgroundGradients: UtilityConfig = {
   backgroundGradient: {
     shorthand: 'bgGradient',
     className: 'bg-grad',
     group: 'Background Gradient',
-    values(theme) {
-      return {
-        ...theme('gradients'),
-        ...gradientTemplate,
+    values: linearGradientValues,
+    transform(_value, { raw: value, token }) {
+      const tokenValue = token(`gradients.${value}`)
+      if (tokenValue) {
+        return { backgroundImage: tokenValue }
       }
-    },
-    transform(value) {
       return {
-        ...gradientVars,
-        backgroundImage: value,
+        '--gradient-stops': gradientStops,
+        '--gradient-position': linearGradientDirectionMap.get(value) || value,
+        backgroundImage: `linear-gradient(var(--gradient-stops))`,
       }
     },
   },
+
+  backgroundLinear: {
+    shorthand: 'bgLinear',
+    className: 'bg-linear',
+    group: 'Background Gradient',
+    values: linearGradientValues,
+    transform(_value, { raw: value, token }) {
+      const tokenValue = token(`gradients.${value}`)
+      if (tokenValue) {
+        return { backgroundImage: tokenValue }
+      }
+      return {
+        '--gradient-stops': gradientStops,
+        '--gradient-position': linearGradientDirectionMap.get(value) || value,
+        backgroundImage: `linear-gradient(var(--gradient-stops))`,
+      }
+    },
+  },
+
+  backgroundRadial: {
+    shorthand: 'bgRadial',
+    className: 'bg-radial',
+    group: 'Background Gradient',
+    values: 'gradients',
+    transform(_value, { raw: value, token }) {
+      const tokenValue = token(`gradients.${value}`)
+      if (tokenValue) {
+        return { backgroundImage: tokenValue }
+      }
+      return {
+        '--gradient-stops': gradientStops,
+        '--gradient-position': value,
+        backgroundImage: `radial-gradient(var(--gradient-stops,${value}))`,
+      }
+    },
+  },
+
+  backgroundConic: {
+    shorthand: 'bgConic',
+    className: 'bg-conic',
+    group: 'Background Gradient',
+    transform(value) {
+      return {
+        '--gradient-stops': gradientStops,
+        '--gradient-position': value,
+        backgroundImage: `conic-gradient(var(--gradient-stops))`,
+      }
+    },
+  },
+
   textGradient: {
     className: 'txt-grad',
     group: 'Background Gradient',
-    values(theme) {
-      return {
-        ...theme('gradients'),
-        ...gradientTemplate,
+    values: linearGradientValues,
+    transform(_value, { raw: value, token }) {
+      const tokenValue = token(`gradients.${value}`)
+      if (tokenValue) {
+        return {
+          backgroundImage: tokenValue,
+          WebkitBackgroundClip: 'text',
+          color: 'transparent',
+        }
       }
-    },
-    transform(value) {
       return {
-        ...gradientVars,
-        backgroundImage: value,
+        '--gradient-stops': gradientStops,
+        '--gradient-position': linearGradientDirectionMap.get(value) || value,
+        backgroundImage: `linear-gradient(var(--gradient-stops))`,
         WebkitBackgroundClip: 'text',
         color: 'transparent',
       }
@@ -94,8 +155,8 @@ export const backgroundGradients: UtilityConfig = {
       const transformed = gradientVia(value, args)
       return {
         ...transformed,
-        '--gradient-stops':
-          'var(--gradient-from) var(--gradient-from-position), var(--gradient-via) var(--gradient-via-position), var(--gradient-to) var(--gradient-to-position)',
+        '--gradient-stops': 'var(--gradient-via-stops)',
+        '--gradient-via-stops': gradientViaStops,
       }
     },
   },

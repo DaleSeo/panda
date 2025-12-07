@@ -1,5 +1,256 @@
 # @pandacss/config
 
+## 1.6.1
+
+### Patch Changes
+
+- @pandacss/logger@1.6.1
+- @pandacss/preset-base@1.6.1
+- @pandacss/preset-panda@1.6.1
+- @pandacss/shared@1.6.1
+- @pandacss/types@1.6.1
+
+## 1.6.0
+
+### Patch Changes
+
+- @pandacss/logger@1.6.0
+- @pandacss/preset-base@1.6.0
+- @pandacss/preset-panda@1.6.0
+- @pandacss/shared@1.6.0
+- @pandacss/types@1.6.0
+
+## 1.5.1
+
+### Patch Changes
+
+- @pandacss/logger@1.5.1
+- @pandacss/preset-base@1.5.1
+- @pandacss/preset-panda@1.5.1
+- @pandacss/shared@1.5.1
+- @pandacss/types@1.5.1
+
+## 1.5.0
+
+### Minor Changes
+
+- 91c65ff: Add support for controlling the color palette generation via `theme.colorPalette` property.
+
+  ```ts
+  // Disable color palette generation completely
+  export default defineConfig({
+    theme: {
+      colorPalette: {
+        enabled: false,
+      },
+    },
+  })
+
+  // Include only specific colors
+  export default defineConfig({
+    theme: {
+      colorPalette: {
+        include: ['gray', 'blue', 'red'],
+      },
+    },
+  })
+
+  // Exclude specific colors
+  export default defineConfig({
+    theme: {
+      colorPalette: {
+        exclude: ['yellow', 'orange'],
+      },
+    },
+  })
+  ```
+
+### Patch Changes
+
+- Updated dependencies [91c65ff]
+  - @pandacss/types@1.5.0
+  - @pandacss/logger@1.5.0
+  - @pandacss/preset-base@1.5.0
+  - @pandacss/preset-panda@1.5.0
+  - @pandacss/shared@1.5.0
+
+## 1.4.3
+
+### Patch Changes
+
+- 84a0de9: Improve static CSS generation performance with wildcard memoization. Token lookups for wildcard (`*`)
+  expansions are now cached, providing ~32% faster processing for large configs with wildcards.
+  - @pandacss/logger@1.4.3
+  - @pandacss/preset-base@1.4.3
+  - @pandacss/preset-panda@1.4.3
+  - @pandacss/shared@1.4.3
+  - @pandacss/types@1.4.3
+
+## 1.4.2
+
+### Patch Changes
+
+- 0679f6f: Fix issue where `create-recipe.mjs` helper was not generated when adding the first recipe to a project that
+  previously had no recipes.
+- Updated dependencies [1290a27]
+  - @pandacss/shared@1.4.2
+  - @pandacss/types@1.4.2
+  - @pandacss/logger@1.4.2
+  - @pandacss/preset-base@1.4.2
+  - @pandacss/preset-panda@1.4.2
+
+## 1.4.1
+
+### Patch Changes
+
+- @pandacss/logger@1.4.1
+- @pandacss/preset-base@1.4.1
+- @pandacss/preset-panda@1.4.1
+- @pandacss/shared@1.4.1
+- @pandacss/types@1.4.1
+
+## 1.4.0
+
+### Patch Changes
+
+- Updated dependencies [1bca361]
+- Updated dependencies [29cf719]
+  - @pandacss/preset-base@1.4.0
+  - @pandacss/preset-panda@1.4.0
+  - @pandacss/logger@1.4.0
+  - @pandacss/shared@1.4.0
+  - @pandacss/types@1.4.0
+
+## 1.3.1
+
+### Patch Changes
+
+- @pandacss/logger@1.3.1
+- @pandacss/preset-base@1.3.1
+- @pandacss/preset-panda@1.3.1
+- @pandacss/shared@1.3.1
+- @pandacss/types@1.3.1
+
+## 1.3.0
+
+### Patch Changes
+
+- Updated dependencies [70efd73]
+- Updated dependencies [1c36121]
+  - @pandacss/types@1.3.0
+  - @pandacss/preset-base@1.3.0
+  - @pandacss/logger@1.3.0
+  - @pandacss/preset-panda@1.3.0
+  - @pandacss/shared@1.3.0
+
+## 1.2.0
+
+### Patch Changes
+
+- Updated dependencies [ae7cc8d]
+- Updated dependencies [9964772]
+  - @pandacss/preset-panda@1.2.0
+  - @pandacss/preset-base@1.2.0
+  - @pandacss/logger@1.2.0
+  - @pandacss/shared@1.2.0
+  - @pandacss/types@1.2.0
+
+## 1.1.0
+
+### Minor Changes
+
+- e8ec0aa: Add support for `preset:resolved` hook to pick/omit specific preset properties.
+
+### Patch Changes
+
+- Updated dependencies [47a0011]
+- Updated dependencies [e8ec0aa]
+  - @pandacss/types@1.1.0
+  - @pandacss/shared@1.1.0
+  - @pandacss/logger@1.1.0
+  - @pandacss/preset-base@1.1.0
+  - @pandacss/preset-panda@1.1.0
+
+## 1.0.1
+
+### Patch Changes
+
+- Updated dependencies [0019184]
+  - @pandacss/preset-base@1.0.1
+  - @pandacss/logger@1.0.1
+  - @pandacss/preset-panda@1.0.1
+  - @pandacss/shared@1.0.1
+  - @pandacss/types@1.0.1
+
+## 1.0.0
+
+### Major Changes
+
+- a3bcbea: Stable release of PandaCSS
+
+  ### Style Context
+
+  Add `createStyleContext` function to framework artifacts for React, Preact, Solid, and Vue frameworks
+
+  ```tsx
+  import { sva } from 'styled-system/css'
+  import { createStyleContext } from 'styled-system/jsx'
+
+  const card = sva({
+    slots: ['root', 'label'],
+    base: {
+      root: {
+        color: 'red',
+        bg: 'red.300',
+      },
+      label: {
+        fontWeight: 'medium',
+      },
+    },
+    variants: {
+      size: {
+        sm: {
+          root: {
+            padding: '10px',
+          },
+        },
+        md: {
+          root: {
+            padding: '20px',
+          },
+        },
+      },
+    },
+    defaultVariants: {
+      size: 'sm',
+    },
+  })
+
+  const { withProvider, withContext } = createStyleContext(card)
+
+  const CardRoot = withProvider('div', 'root')
+  const CardLabel = withContext('label', 'label')
+  ```
+
+  Then, use like this:
+
+  ```tsx
+  <CardRoot size="sm">
+    <CardLabel>Hello</CardLabel>
+  </CardRoot>
+  ```
+
+### Patch Changes
+
+- Updated dependencies [860cc7d]
+- Updated dependencies [a20811c]
+- Updated dependencies [a3bcbea]
+  - @pandacss/preset-base@1.0.0
+  - @pandacss/logger@1.0.0
+  - @pandacss/preset-panda@1.0.0
+  - @pandacss/shared@1.0.0
+  - @pandacss/types@1.0.0
+
 ## 0.54.0
 
 ### Patch Changes

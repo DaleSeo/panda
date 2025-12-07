@@ -1,11 +1,12 @@
 {
   "name": "@pandacss/dev",
-  "version": "0.54.0",
+  "version": "1.6.1",
   "description": "The user facing package for panda css",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "author": "Segun Adebayo <joseshegs@gmail.com>",
+  "license": "MIT",
   "bin": {
     "panda": "bin.js",
     "pandacss": "bin.js"
@@ -56,11 +57,12 @@
     "postcss.js"
   ],
   "dependencies": {
-    "@clack/prompts": "0.9.1",
+    "@clack/prompts": "0.11.0",
     "@pandacss/config": "workspace:*",
     "@pandacss/logger": "workspace:*",
     "@pandacss/node": "workspace:*",
     "@pandacss/postcss": "workspace:*",
+    "@pandacss/preset-base": "workspace:*",
     "@pandacss/preset-panda": "workspace:*",
     "@pandacss/shared": "workspace:*",
     "@pandacss/token-dictionary": "workspace:*",
@@ -70,6 +72,6 @@
   "devDependencies": {
     "@types/update-notifier": "6.0.8",
     "kleur": "4.1.5",
-    "update-notifier": "7.0.0"
+    "update-notifier": "7.3.1"
   }
 }

@@ -5913,7 +5913,7 @@ describe('generate property types', () => {
          *
          * @see https://developer.mozilla.org/docs/Web/CSS/transition-property
          */
-      transitionProperty?: ConditionalValue<CssProperties["transitionProperty"] | AnyString>
+      transitionProperty?: ConditionalValue<UtilityValues["transitionProperty"] | CssVars | CssProperties["transitionProperty"] | AnyString>
        /**
          * The **\`transition-timing-function\`** CSS property sets how intermediate values are calculated for CSS properties being affected by a transition effect.
          *
@@ -6998,6 +6998,9 @@ describe('generate property types', () => {
          */
       bgSize?: ConditionalValue<CssProperties["backgroundSize"] | AnyString>
        bgGradient?: ConditionalValue<UtilityValues["backgroundGradient"] | CssVars | AnyString>
+       bgLinear?: ConditionalValue<UtilityValues["backgroundLinear"] | CssVars | AnyString>
+       bgRadial?: ConditionalValue<string | number | AnyString>
+       bgConic?: ConditionalValue<string | number | AnyString>
        /**
          * The **\`border-radius\`** CSS property rounds the corners of an element's outer border edge. You can set a single radius to make circular corners, or two radii to make elliptical corners.
          *
@@ -7365,13 +7368,23 @@ describe('generate property types', () => {
        hideBelow?: ConditionalValue<UtilityValues["hideBelow"] | CssVars | AnyString>
        spaceX?: ConditionalValue<UtilityValues["spaceX"] | CssVars | AnyString>
        spaceY?: ConditionalValue<UtilityValues["spaceY"] | CssVars | AnyString>
+       focusRing?: ConditionalValue<UtilityValues["focusRing"] | CssVars | AnyString>
+       focusVisibleRing?: ConditionalValue<UtilityValues["focusVisibleRing"] | CssVars | AnyString>
+       focusRingColor?: ConditionalValue<UtilityValues["focusRingColor"] | CssVars | AnyString>
+       focusRingOffset?: ConditionalValue<UtilityValues["focusRingOffset"] | CssVars | AnyString>
+       focusRingWidth?: ConditionalValue<UtilityValues["focusRingWidth"] | CssVars | AnyString>
+       focusRingStyle?: ConditionalValue<UtilityValues["focusRingStyle"] | CssVars | AnyString>
        divideX?: ConditionalValue<string | number | AnyString>
        divideY?: ConditionalValue<string | number | AnyString>
        divideColor?: ConditionalValue<UtilityValues["divideColor"] | CssVars | AnyString>
        divideStyle?: ConditionalValue<UtilityValues["divideStyle"] | CssVars | AnyString>
+       boxSize?: ConditionalValue<UtilityValues["boxSize"] | CssVars | AnyString>
        fontSmoothing?: ConditionalValue<UtilityValues["fontSmoothing"] | CssVars | AnyString>
        truncate?: ConditionalValue<UtilityValues["truncate"] | CssVars | AnyString>
        backgroundGradient?: ConditionalValue<UtilityValues["backgroundGradient"] | CssVars | AnyString>
+       backgroundLinear?: ConditionalValue<UtilityValues["backgroundLinear"] | CssVars | AnyString>
+       backgroundRadial?: ConditionalValue<string | number | AnyString>
+       backgroundConic?: ConditionalValue<string | number | AnyString>
        textGradient?: ConditionalValue<UtilityValues["textGradient"] | CssVars | AnyString>
        gradientFromPosition?: ConditionalValue<string | number | AnyString>
        gradientToPosition?: ConditionalValue<string | number | AnyString>
@@ -13408,7 +13421,7 @@ describe('generate property types', () => {
          *
          * @see https://developer.mozilla.org/docs/Web/CSS/transition-property
          */
-      transitionProperty?: ConditionalValue<WithEscapeHatch<CssProperties["transitionProperty"]>>
+      transitionProperty?: ConditionalValue<WithEscapeHatch<UtilityValues["transitionProperty"] | CssVars>>
        /**
          * The **\`transition-timing-function\`** CSS property sets how intermediate values are calculated for CSS properties being affected by a transition effect.
          *
@@ -14493,6 +14506,9 @@ describe('generate property types', () => {
          */
       bgSize?: ConditionalValue<WithEscapeHatch<CssProperties["backgroundSize"]>>
        bgGradient?: ConditionalValue<WithEscapeHatch<UtilityValues["backgroundGradient"] | CssVars>>
+       bgLinear?: ConditionalValue<WithEscapeHatch<UtilityValues["backgroundLinear"] | CssVars>>
+       bgRadial?: ConditionalValue<WithEscapeHatch<string | number>>
+       bgConic?: ConditionalValue<WithEscapeHatch<string | number>>
        /**
          * The **\`border-radius\`** CSS property rounds the corners of an element's outer border edge. You can set a single radius to make circular corners, or two radii to make elliptical corners.
          *
@@ -14860,13 +14876,23 @@ describe('generate property types', () => {
        hideBelow?: ConditionalValue<WithEscapeHatch<UtilityValues["hideBelow"] | CssVars>>
        spaceX?: ConditionalValue<WithEscapeHatch<UtilityValues["spaceX"] | CssVars>>
        spaceY?: ConditionalValue<WithEscapeHatch<UtilityValues["spaceY"] | CssVars>>
+       focusRing?: ConditionalValue<WithEscapeHatch<UtilityValues["focusRing"] | CssVars>>
+       focusVisibleRing?: ConditionalValue<WithEscapeHatch<UtilityValues["focusVisibleRing"] | CssVars>>
+       focusRingColor?: ConditionalValue<WithEscapeHatch<UtilityValues["focusRingColor"] | CssVars>>
+       focusRingOffset?: ConditionalValue<WithEscapeHatch<UtilityValues["focusRingOffset"] | CssVars>>
+       focusRingWidth?: ConditionalValue<WithEscapeHatch<string | number>>
+       focusRingStyle?: ConditionalValue<WithEscapeHatch<string | number>>
        divideX?: ConditionalValue<WithEscapeHatch<string | number>>
        divideY?: ConditionalValue<WithEscapeHatch<string | number>>
        divideColor?: ConditionalValue<WithEscapeHatch<UtilityValues["divideColor"] | CssVars>>
        divideStyle?: ConditionalValue<WithEscapeHatch<string | number>>
+       boxSize?: ConditionalValue<WithEscapeHatch<UtilityValues["boxSize"] | CssVars>>
        fontSmoothing?: ConditionalValue<WithEscapeHatch<UtilityValues["fontSmoothing"] | CssVars>>
        truncate?: ConditionalValue<WithEscapeHatch<UtilityValues["truncate"] | CssVars>>
        backgroundGradient?: ConditionalValue<WithEscapeHatch<UtilityValues["backgroundGradient"] | CssVars>>
+       backgroundLinear?: ConditionalValue<WithEscapeHatch<UtilityValues["backgroundLinear"] | CssVars>>
+       backgroundRadial?: ConditionalValue<WithEscapeHatch<string | number>>
+       backgroundConic?: ConditionalValue<WithEscapeHatch<string | number>>
        textGradient?: ConditionalValue<WithEscapeHatch<UtilityValues["textGradient"] | CssVars>>
        gradientFromPosition?: ConditionalValue<WithEscapeHatch<string | number>>
        gradientToPosition?: ConditionalValue<WithEscapeHatch<string | number>>
